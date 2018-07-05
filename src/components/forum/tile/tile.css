@@ -1,0 +1,39 @@
+:local(.tile) {
+  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+  border-radius: 2px;
+  background-color: #fff;
+  margin: 0.5rem;
+  min-height: 180px;
+  font-family: 'Poiret One';
+  width: calc(25% - 1.0rem);
+  min-width: 50px;
+  display: inline-block;
+  overflow: hidden;
+  color: #fff;
+}
+
+:local(.tile__container) {
+  width: 100%;
+  height: 100%;
+  padding: 15px;
+}
+
+:local(.tile__author) {
+  font-size: 14px;
+}
+
+:local(.woodVeneer) {
+  background-color: #882426;
+}
+
+:local(.sandDollar) {
+  background-color: #CDBEA7;
+}
+
+:local(.charcoal) {
+  background-color: #323030;
+}
+
+:local(.orange) {
+  background-color: #C29545;
+}

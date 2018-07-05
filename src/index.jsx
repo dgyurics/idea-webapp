@@ -5,10 +5,12 @@ import { Provider } from "react-redux";
 import store from "./rdx/index";
 
 import App from './App';
+import Home from './HomePage';
+import Forum from './components/forum/forum.js'
 
 ReactDOM.render(
   <Provider store={store}>
-    <App/>
+    <Home/>
   </Provider>,
   document.getElementById('react-div')
 );

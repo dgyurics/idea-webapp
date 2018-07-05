@@ -1,0 +1,16 @@
+:local(.footer) {
+  color: rgba(255, 255, 255, 0.73);
+  font-family: 'Poiret One', cursive;
+  bottom: 0;
+  position: absolute;
+  font-size: 1.3rem;
+  width: 100%;
+  text-align: center;
+  padding-bottom: 7px;
+  margin: 0;
+  display: block;
+}
+
+:local(.footer span) {
+  cursor: pointer;
+}

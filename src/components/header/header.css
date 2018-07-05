@@ -1,0 +1,37 @@
+:local(.header) {
+  top: 0;
+  display: block;
+  position: absolute;
+  width: 100%;
+}
+
+:local(ol) {
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  list-style-type: none;
+  padding-left: 1.5rem;
+  padding-right: 1.5rem;
+}
+
+:local(li) {
+  float: right;
+  line-height: 18px;
+  font-size: 1.5rem;
+  font-family: 'Poiret One';
+  margin: 2.5rem 1.0rem;
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+}
+
+:local(a) {
+  text-decoration: none;
+  color: white;
+}
+
+:local(a:hover) {
+  text-decoration: none;
+  color: white;
+}
