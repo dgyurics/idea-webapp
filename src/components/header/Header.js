@@ -5,6 +5,7 @@ import {messageCircle} from 'react-icons-kit/feather/messageCircle'
 import {github} from 'react-icons-kit/feather/github'
 import {layers} from 'react-icons-kit/feather/layers'
 import {user} from 'react-icons-kit/feather/user'
+import { Link } from 'react-router-dom'
 
 const Header = props => {
   return (
@@ -15,7 +16,10 @@ const Header = props => {
             <Icon icon={github}/>
           </a>
         </li>
-        <li><Icon icon={layers}/></li>
+        <li>
+          <Link to={'/forum'}>
+            <Icon icon={layers}/>
+          </Link></li>
       </ol>
     </div>
   )
