@@ -24,10 +24,10 @@ class Tile extends Component {
   render() {
     let author = this.props.author;
     let title = this.props.title;
-    let style = this.getBackgroundColor(this.props.index);
+    // let style = this.getBackgroundColor(this.props.index);
 
     return (
-      <div className={styles.tile + ' ' + style}>
+      <div className={styles.tile}>
         <div className={styles.tile__container}>
           <h4 className={styles.tile__author}><b>{author}</b></h4>
           <p>{title}</p>

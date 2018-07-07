@@ -34,4 +34,5 @@
 :local(a:hover) {
   text-decoration: none;
   color: white;
+  opacity: 0.5;
 }

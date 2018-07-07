@@ -43,7 +43,7 @@ module.exports = {
       {
         test: /\.(png|woff|woff2|eot|ttf|svg)$/,
         loader: 'url-loader?limit=100000'
-      }      
+      }
     ]
   },
   plugins: [
@@ -54,6 +54,7 @@ module.exports = {
     })
   ],
   devServer: {
-    contentBase: "./dist"
+    contentBase: "./dist",
+    historyApiFallback: true
   }
 };

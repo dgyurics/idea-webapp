@@ -1,7 +1,6 @@
 :local(.tile) {
-  box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
   border-radius: 2px;
-  background-color: #fff;
+  background-color: #69656b1f;
   margin: 0.5rem;
   min-height: 180px;
   font-family: 'Poiret One';
@@ -9,7 +8,12 @@
   min-width: 50px;
   display: inline-block;
   overflow: hidden;
-  color: #fff;
+  color: #000;
+}
+
+:local(.tile:hover) {
+  opacity: 0.6;
+  cursor: pointer;
 }
 
 :local(.tile__container) {
