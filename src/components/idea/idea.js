@@ -1,9 +1,9 @@
 import React, { Component, PropTypes } from 'react'
 import Card from './tile/tile.js'
 import Navigation from './navigation/navigation.js'
-import styles from './forum.css'
+import styles from './idea.css'
 
-class ForumPage extends Component {
+class IdeaPage extends Component {
   constructor(state, props) {
     super(state, props);
   }
@@ -12,7 +12,7 @@ class ForumPage extends Component {
     return (
       <div>
         <Navigation/>
-        <div className={styles.forumMain}>
+        <div className={styles.ideaMain}>
           <Card index={0} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
           <Card index={1} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
           <Card index={2} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
@@ -26,4 +26,4 @@ class ForumPage extends Component {
   }
 }
 
-export default ForumPage;
+export default IdeaPage;

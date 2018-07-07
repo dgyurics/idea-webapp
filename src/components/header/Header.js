@@ -17,7 +17,7 @@ const Header = props => {
           </a>
         </li>
         <li>
-          <Link to={'/forum'}>
+          <Link to={'/idea'}>
             <Icon icon={layers}/>
           </Link></li>
       </ol>
