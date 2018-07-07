@@ -10,6 +10,9 @@ class Navigation extends Component {
   render() {
     return (
       <div className={styles.navigation}>
+        <div className={styles.navigation__left}>
+          <span className={styles.directory}>lagom</span>
+        </div>
       </div>
     )
   }

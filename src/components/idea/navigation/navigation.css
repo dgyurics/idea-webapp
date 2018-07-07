@@ -1,5 +1,18 @@
 :local(.navigation) {
   width: 100%;
   min-height: 32px;
-  background-color: pink;
+  background-color: #000;
+  color: #fff;
+  font-family: 'Poiret One';
+  font-weight: 700;
+  font-family: 'Montserrat Alternates', sans-serif;
+}
+
+:local(.directory) {
+  letter-spacing: 1.5px;
+}
+
+:local(.navigation__left) {
+  line-height: 4.5rem;
+  padding-left: 1.5rem;
 }
