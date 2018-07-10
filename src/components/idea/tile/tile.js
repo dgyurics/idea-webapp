@@ -7,30 +7,17 @@ class Tile extends Component {
     super(props);
   }
 
-  getBackgroundColor(index) {
-    index = index < 4 ? index : index % 4;
-    switch(index) {
-      case 0:
-        return styles.woodVeneer;
-      case 1:
-        return styles.sandDollar;
-      case 2:
-        return styles.charcoal;
-      case 3:
-        return styles.orange;
-      }
-  }
-
   render() {
     let author = this.props.author;
     let title = this.props.title;
-    // let style = this.getBackgroundColor(this.props.index);
 
     return (
       <div className={styles.tile}>
         <div className={styles.tile__container}>
-          <h4 className={styles.tile__author}><b>{author}</b></h4>
+          <h4 className={styles.tile__author}>{author}</h4>
           <p>{title}</p>
+        </div>
+        <div className={styles.tile__icons}>
         </div>
       </div>
     )

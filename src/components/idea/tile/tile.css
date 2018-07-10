@@ -1,4 +1,6 @@
 :local(.tile) {
+  position: relative;
+  display: inline-block;
   border-radius: 2px;
   background-color: #69656b1f;
   margin: 0.5rem;
@@ -6,7 +8,6 @@
   font-family: 'Poiret One';
   width: calc(25% - 1.0rem);
   min-width: 50px;
-  display: inline-block;
   overflow: hidden;
   color: #000;
 }
@@ -20,24 +21,19 @@
   width: 100%;
   height: 100%;
   padding: 15px;
+  display: block;
 }
 
 :local(.tile__author) {
   font-size: 14px;
+  font-weight: 700;
 }
 
-:local(.woodVeneer) {
-  background-color: #882426;
-}
-
-:local(.sandDollar) {
-  background-color: #CDBEA7;
-}
-
-:local(.charcoal) {
-  background-color: #323030;
-}
-
-:local(.orange) {
-  background-color: #C29545;
+:local(.tile__icons) {
+  width: 100%;
+  min-height: 30px;
+  background-color: #0000000a;
+  display: block;
+  position: absolute;
+  bottom: 0;
 }
