@@ -1,0 +1,9 @@
+:local(.category) {
+  height: 10px;
+  width: 10px;
+  margin-left: .3rem;
+  margin-right: .3rem;
+  display: inline-block;
+  background-color: #ffffffad;
+  border-radius: 50%;
+}

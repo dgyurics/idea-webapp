@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
+import Category from './category/category.js'
 import styles from './tile.css'
 
 class Tile extends Component {
@@ -14,10 +15,12 @@ class Tile extends Component {
     return (
       <div className={styles.tile}>
         <div className={styles.tile__container}>
-          <h4 className={styles.tile__author}>{author}</h4>
-          <p>{title}</p>
+          <span className={styles.tile__title}>{title}</span>
+          <span className={styles.tile__author}>{author}</span>
         </div>
         <div className={styles.tile__icons}>
+          <Category/>
+          <Category/>
         </div>
       </div>
     )
