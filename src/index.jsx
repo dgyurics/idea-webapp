@@ -8,6 +8,7 @@ import store from "./rdx/index"
 import App from './App'
 import Home from './HomePage'
 import IdeaPage from './components/idea-page/idea.js'
+import ConversationPage from './components/conversation-page/conversation.js'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -15,6 +16,7 @@ ReactDOM.render(
       <Switch>
         <Route exact path="/" component={Home} />
         <Route path="/idea" component={IdeaPage} />
+        <Route path="/conversation/:id" component={ConversationPage} />
       </Switch>
     </Router>
   </Provider>,

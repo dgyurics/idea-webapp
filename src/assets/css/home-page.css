@@ -16,7 +16,7 @@ html, body, #react-div {
   width: 100%;
   height: 100%;
   font-size: 14px;
-  overflow: hidden;
+  overflow: scroll;
 
   -webkit-touch-callout: none; /* iOS Safari */
     -webkit-user-select: none; /* Safari */
@@ -25,6 +25,14 @@ html, body, #react-div {
         -ms-user-select: none; /* Internet Explorer/Edge */
             user-select: none; /* Non-prefixed version, currently
                                   supported by Chrome and Opera */
+}
+
+h1, h2, h3 {
+  font-size: 2rem;
+  margin: 0.5rem;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  padding: 0;
 }
 
 :local(.container) {
