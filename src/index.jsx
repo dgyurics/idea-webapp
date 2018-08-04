@@ -7,14 +7,14 @@ import store from "./rdx/index"
 
 import App from './App'
 import Home from './HomePage'
-import Idea from './components/idea/idea.js'
+import IdeaPage from './components/idea-page/idea.js'
 
 ReactDOM.render(
   <Provider store={store}>
     <Router>
       <Switch>
         <Route exact path="/" component={Home} />
-        <Route path="/idea" component={Idea} />
+        <Route path="/idea" component={IdeaPage} />
       </Switch>
     </Router>
   </Provider>,
