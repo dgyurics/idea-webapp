@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import styles from './category.css'
+import styles from './Category.css'
 
 const Category = props => {
   return (

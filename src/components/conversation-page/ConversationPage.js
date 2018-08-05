@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
-import Navigation from '../idea-page/navigation/navigation.js'
+import Navigation from '../idea-page/navigation/Navigation.js'
 import PropTypes from 'prop-types'
-import styles from './conversation.css'
+import styles from './ConversationPage.css'
 
 class ConversationPage extends Component {
   constructor(state, props) {
@@ -9,9 +9,8 @@ class ConversationPage extends Component {
   }
 
   componentDidMount() {
-    const { id } = this.props.match.params;
-    console.log(id);
-    // TODO fetch conversation details here
+    const { conversationId } = this.props.match.params;
+    console.log(conversationId);
   }
 
   render() {

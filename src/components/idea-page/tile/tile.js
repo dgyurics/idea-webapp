@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import Category from './category/category.js'
-import styles from './tile.css'
+import Category from './category/Category.js'
+import styles from './Tile.css'
 
 class Tile extends Component {
   constructor(props) {

@@ -1,11 +1,9 @@
 import React, { Component, PropTypes } from 'react'
-import Header from './components/header/Header.js'
-import Footer from './components/footer/Footer.js'
+import Header from './header/Header.js'
+import Footer from './footer/Footer.js'
+import styles from './HomePage.css'
 
-// Using CSS Modules mechanism
-import styles from './assets/css/home-page.css'
-
-class HomePage extends Component {
+class Home extends Component {
   constructor(state, props) {
     super(state, props);
   }
@@ -24,4 +22,4 @@ class HomePage extends Component {
   }
 }
 
-export default HomePage;
+export default Home;

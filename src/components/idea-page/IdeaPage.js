@@ -1,8 +1,8 @@
 import React, { Component, PropTypes } from 'react'
 import Card from './tile/tile.js'
 import { Link } from 'react-router-dom'
-import Navigation from './navigation/navigation.js'
-import styles from './idea.css'
+import Navigation from './navigation/Navigation.js'
+import styles from './IdeaPage.css'
 
 class IdeaPage extends Component {
   constructor(state, props) {

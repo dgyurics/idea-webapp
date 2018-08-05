@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
-import styles from './navigation.css'
+import styles from './Navigation.css'
 
 class Navigation extends Component {
   constructor(props) {
