@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import Navigation from '../idea-page/navigation/Navigation.js'
+import TextArea from '../text-area/TextArea.js'
 import PropTypes from 'prop-types'
 import styles from './ConversationPage.css'
 
@@ -29,6 +30,7 @@ class ConversationPage extends Component {
             <div className="conversation__message conversation__message--left">
               It has roots in a piece of classical Latin literature from 45 BC, making it over 2000 years old.
             </div>
+            <TextArea />
           </div>
         </div>
       </div>

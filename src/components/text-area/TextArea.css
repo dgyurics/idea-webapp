@@ -1,0 +1,7 @@
+.textarea {
+  width: inherit;
+  height: 6rem;
+  position: fixed;
+  bottom: 3rem;
+  resize: none;
+}
