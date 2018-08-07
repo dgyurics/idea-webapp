@@ -9,6 +9,10 @@
   width: 70%;
   margin: auto;
 }
+.conversation--center {
+  width: 70%;
+  margin: auto;
+}
 .conversation__message {
   padding: 1rem;
   padding-right: 30px;

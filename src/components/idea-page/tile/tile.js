@@ -18,10 +18,6 @@ class Tile extends Component {
           <span className={styles.tile__title}>{title}</span>
           <span className={styles.tile__author}>{author}</span>
         </div>
-        <div className={styles.tile__icons}>
-          <Category/>
-          <Category/>
-        </div>
       </div>
     )
   }

@@ -2,10 +2,9 @@
   position: relative;
   display: inline-block;
   border: 1px solid #d8d8d899;
-  background-color: #69656b1f;
+  background-color: #f7f7f7;
   margin: 0.5rem;
   min-height: 180px;
-  font-family: 'Poiret One';
   width: calc(25% - 1.0rem);
   min-width: 50px;
   overflow: hidden;
@@ -13,7 +12,7 @@
 }
 
 :local(.tile:hover) {
-  opacity: 0.6;
+  background-color: #f7f7f79e;
   cursor: pointer;
 }
 
@@ -26,7 +25,7 @@
 
 :local(.tile__title),
 :local(.tile__author) {
-  font-size: 1rem;
+  font-weight: 300;
   line-height: 2;
   white-space: nowrap;
   display: block;
@@ -34,7 +33,8 @@
   overflow: hidden;
 }
 
-:local(.tile__title) {
+:local(.tile__author) {
+  font-size: 0.8rem;
 }
 
 :local(.tile__icons) {
