@@ -6,13 +6,24 @@
   font-family: 'Poiret One';
   font-weight: 700;
   font-family: 'Montserrat Alternates', sans-serif;
+  padding: 0 1.5rem 0;
 }
 
 :local(.directory) {
   letter-spacing: 1.5px;
 }
 
-:local(.navigation__left) {
+:local(.navigation__left),
+:local(.navigation__right) {
+  display: inline;
   line-height: 3.5rem;
-  padding-left: 1.5rem;
+}
+:local(.navigation__left) {
+}
+:local(.navigation__right) {
+  float: right;
+}
+:local(.navigation__icon) {
+  vertical-align: middle;
+  cursor: pointer;
 }
