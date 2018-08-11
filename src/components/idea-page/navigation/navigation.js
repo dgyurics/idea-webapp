@@ -15,7 +15,6 @@ class Navigation extends Component {
   handleLockClick() {
       console.log('lock clicked')
       this.props.loginV2();
-      console
   }
 
   render() {
