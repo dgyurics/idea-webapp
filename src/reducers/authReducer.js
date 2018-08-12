@@ -1,4 +1,4 @@
-import { LOGIN_REQUEST, LOGIN_SUCCESS, LOGIN_FAILURE, LOGOUT_REQUEST } from '../actions/types'
+import { LOGIN_SUCCESS, LOGOUT_REQUEST } from '../actions/types'
 
 const initialState = {
   loggedIn: false,
@@ -7,8 +7,7 @@ const initialState = {
 
 export default function(state = initialState, action) {
   switch(action.type) {
-    case LOGIN_REQUEST:
-      console.log('reducer')
+    case LOGIN_SUCCESS:
       return {
         ...state,
         sessionId: action.payload.sessionId

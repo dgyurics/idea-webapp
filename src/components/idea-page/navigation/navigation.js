@@ -13,12 +13,10 @@ class Navigation extends Component {
   }
 
   handleLockClick() {
-      console.log('lock clicked')
-      this.props.loginV2();
+    this.props.loginV2();
   }
 
   render() {
-    console.log(this.props.sessionId)
     return (
       <div className={styles.navigation}>
         <div className={styles.navigation__left}>

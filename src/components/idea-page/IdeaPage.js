@@ -1,12 +1,37 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
+import styles from './IdeaPage.css'
 import Card from './tile/tile.js'
 import { Link } from 'react-router-dom'
 import Navigation from './navigation/Navigation.js'
-import styles from './IdeaPage.css'
+import { getIdeas } from '../../actions/ideaActions.js'
+import { connect } from 'react-redux'
 
 class IdeaPage extends Component {
-  constructor(state, props) {
-    super(state, props);
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.getIdeas();
+  }
+
+  createIdeaBlocks() {
+    let result = []
+    let ideas = this.props.ideas;
+
+    for (let i=0; i<ideas.length; i++) {
+      const title = ideas[i].title;
+      const author = ideas[i].author;
+      const url = '/conversation/' + i;
+
+      result.push(
+        <Link to={url} key={i}>
+          <Card title={title} author={author} />
+        </Link>
+      )
+    }
+    return result;
   }
 
   render() {
@@ -14,28 +39,26 @@ class IdeaPage extends Component {
       <div>
         <Navigation/>
         <div className={styles.ideaMain}>
-          <Link to={'/conversation/0'}>
-            <Card index={0} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
-          </Link>
-          <Link to={'/conversation/1'}>
-            <Card index={1} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
-          </Link>
-          <Link to={'/conversation/2'}>
-            <Card index={2} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
-          </Link>
-          <Link to={'/conversation/3'}>
-            <Card index={3} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
-          </Link>
-          <Link to={'/conversation/4'}>
-            <Card index={4} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
-          </Link>
-          <Link to={'/conversation/5'}>
-            <Card index={5} title={'Architecture & Engineering'} author={'Dennis Gyurics'}/>
-          </Link>
+          { this.createIdeaBlocks() }
         </div>
       </div>
     )
   }
 }
 
-export default IdeaPage;
+IdeaPage.propTypes = {
+  getIdeas: PropTypes.func.isRequired,
+  ideas: PropTypes.arrayOf(
+    PropTypes.shape({
+      id: PropTypes.number.isRequired,
+      title: PropTypes.string.isRequired,
+      author: PropTypes.string.isRequired
+    })
+  ).isRequired
+}
+
+const mapStateToProps = state => ({
+  ideas: state.idea.ideas
+})
+
+export default connect(mapStateToProps, {getIdeas})(IdeaPage);

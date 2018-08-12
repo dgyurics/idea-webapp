@@ -24,7 +24,6 @@ class Tile extends Component {
 }
 
 Tile.propTypes = {
-  index: PropTypes.number.isRequired,
   title: PropTypes.string.isRequired,
   author: PropTypes.string.isRequired
 }
