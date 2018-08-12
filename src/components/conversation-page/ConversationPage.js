@@ -23,7 +23,7 @@ class ConversationPage extends Component {
 
     for(let i=0; i<conversation.length; i++) {
       result.push(
-        <div key={i} className="conversation__message conversation__message--left">
+        <div key={i} className={"conversation__message " + (i%2 === 0 ? 'conversation__message--left' : 'conversation__message--right')}>
           {conversation[i].message}
         </div>
       )
