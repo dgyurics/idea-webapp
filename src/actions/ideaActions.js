@@ -23,9 +23,9 @@ export const createIdea = (ideaObj) => dispatch => {
 
 const ideas = [
   {id: 4544, title: 'Architecture & Engineering', author: 'Dennis Gyurics'},
-  {id: 3234, title: 'Architecture & Engineering', author: 'Dennis Gyurics'},
-  {id: 5555, title: 'Architecture & Engineering', author: 'Dennis Gyurics'},
-  {id: 2333, title: 'Architecture & Engineering', author: 'Dennis Gyurics'},
-  {id: 1233, title: 'Architecture & Engineering', author: 'Dennis Gyurics'},
+  {id: 3234, title: 'Politics', author: 'John Doe'},
+  {id: 5555, title: 'Space X mission to mars', author: 'Elon Musk'},
+  {id: 2333, title: 'A really really long title that tries to break the CSS styling', author: 'Russian Hacker'},
+  {id: 1233, title: 'Shoes', author: 'Violet Zaban'},
   {id: 1233, title: 'Architecture & Engineering', author: 'Dennis Gyurics'}
 ]
