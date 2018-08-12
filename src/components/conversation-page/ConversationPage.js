@@ -5,6 +5,7 @@ import PropTypes from 'prop-types'
 import styles from './ConversationPage.css'
 import { connect } from 'react-redux'
 import { getConversation } from '../../actions/conversationActions.js'
+import { getIdeaMetaData } from '../../actions/ideaActions.js'
 
 class ConversationPage extends Component {
   constructor(props) {
@@ -13,8 +14,8 @@ class ConversationPage extends Component {
 
   componentDidMount() {
     const { conversationId } = this.props.match.params;
+    this.props.getIdeaMetaData(conversationId);
     this.props.getConversation(conversationId);
-    console.log(this.props.conversation)
   }
 
   createConversation() {
@@ -37,7 +38,7 @@ class ConversationPage extends Component {
         <Navigation/>
         <div className={styles.conversation__container}>
           <div className={styles.conversation__main}>
-              <h1>Bloop</h1>
+              <h1>{this.props.title}</h1>
               { this.createConversation() }
               <TextArea/>
           </div>
@@ -49,6 +50,7 @@ class ConversationPage extends Component {
 
 ConversationPage.propTypes = {
   getConversation: PropTypes.func.isRequired,
+  title: PropTypes.string.isRequired,
   conversation: PropTypes.arrayOf(
     PropTypes.shape({
       author: PropTypes.string.isRequired,
@@ -58,7 +60,8 @@ ConversationPage.propTypes = {
 }
 
 const mapStateToProps = state => ({
-  conversation: state.conversation.conversation
+  conversation: state.conversation.conversation,
+  title: state.idea.title
 })
 
-export default connect(mapStateToProps,{getConversation})(ConversationPage);
+export default connect(mapStateToProps,{getConversation, getIdeaMetaData})(ConversationPage);
