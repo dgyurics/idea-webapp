@@ -2,8 +2,9 @@ import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styles from './Navigation.css'
 import { Icon } from 'react-icons-kit'
-import {lock} from 'react-icons-kit/feather/lock'
+import { lock } from 'react-icons-kit/feather/lock'
 import { login } from '../../../actions/authActions.js'
+import { Link } from 'react-router-dom'
 import { connect } from 'react-redux'
 
 class Navigation extends Component {
@@ -20,7 +21,9 @@ class Navigation extends Component {
     return (
       <div className={styles.navigation}>
         <div className={styles.navigation__left}>
-          <span className={styles.directory}>lagom</span>
+          <Link to='/idea'>
+            <span className={styles.directory}>lagom</span>
+          </Link>
         </div>
         <div className={styles.navigation__right}>
           <Icon icon={lock} onClick={this.handleLockClick} className={styles.navigation__icon}/>

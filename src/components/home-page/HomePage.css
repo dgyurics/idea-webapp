@@ -28,6 +28,11 @@ h1, h2, h3 {
   padding: 0;
 }
 
+a, a:hover, a:focus, a:visited, a:link, a:active {
+  color: inherit; /* blue colors for links too */
+  text-decoration: none; /* no underline */
+}
+
 textarea, select, input, button { outline: none; }
 
 :local(.container) {
