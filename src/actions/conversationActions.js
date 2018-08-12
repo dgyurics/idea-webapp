@@ -1,6 +1,11 @@
-import { GET_CONVERSATION_SUCCESS } from './types.js'
+import {
+  GET_CONVERSATION_REQUEST,
+  GET_CONVERSATION_SUCCESS,
+  GET_CONVERSATION_FAILURE
+} from './types.js'
 
 export const getConversation = (ideaId) => dispatch => {
+  dispatch({type: GET_CONVERSATION_REQUEST});
   setTimeout(() => dispatch({
     type: GET_CONVERSATION_SUCCESS,
     payload: conversation

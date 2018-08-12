@@ -1,6 +1,12 @@
-import { GET_IDEAS_SUCCESS, CREATE_IDEA_SUCCESS } from './types.js'
+import {
+  GET_IDEAS_REQUEST,
+  GET_IDEAS_SUCCESS,
+  CREATE_IDEA_REQUEST,
+  CREATE_IDEA_SUCCESS
+} from './types.js'
 
 export const getIdeas = () => dispatch => {
+  dispatch({type: GET_IDEAS_REQUEST})
   setTimeout(() => dispatch({
       type: GET_IDEAS_SUCCESS,
       payload: ideas
@@ -8,6 +14,7 @@ export const getIdeas = () => dispatch => {
 }
 
 export const createIdea = (ideaObj) => dispatch => {
+  dispatch({type: CREATE_IDEA_REQUEST})
   setTimeout(() => dispatch({
       type: CREATE_IDEA_SUCCESS,
       payload: {...ideaObj, id: 1234}

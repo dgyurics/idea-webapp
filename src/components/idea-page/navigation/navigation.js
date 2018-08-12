@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './Navigation.css'
 import { Icon } from 'react-icons-kit'
 import {lock} from 'react-icons-kit/feather/lock'
-import { loginV2 } from '../../../actions/authActions.js'
+import { login } from '../../../actions/authActions.js'
 import { connect } from 'react-redux'
 
 class Navigation extends Component {
@@ -13,7 +13,7 @@ class Navigation extends Component {
   }
 
   handleLockClick() {
-    this.props.loginV2();
+    this.props.login();
   }
 
   render() {
@@ -31,7 +31,7 @@ class Navigation extends Component {
 }
 
 Navigation.propTypes = {
-  loginV2: PropTypes.func.isRequired,
+  login: PropTypes.func.isRequired,
   sessionId: PropTypes.string.isRequired
 }
 
@@ -39,4 +39,4 @@ const mapStateToProps = state => ({
   sessionId: state.auth.sessionId
 })
 
-export default connect(mapStateToProps, {loginV2})(Navigation);
+export default connect(mapStateToProps, {login})(Navigation);
