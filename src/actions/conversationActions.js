@@ -1,7 +1,11 @@
 import {
   GET_CONVERSATION_REQUEST,
   GET_CONVERSATION_SUCCESS,
-  GET_CONVERSATION_FAILURE
+  GET_CONVERSATION_FAILURE,
+  GET_CONVERSATION_METADATA_REQUEST,
+  GET_CONVERSATION_METADATA_SUCCESS,
+  GET_CONVERSATION_METADATA_FAILURE,
+  CLEAR_CONVERSATION
 } from './types.js'
 
 export const getConversation = (ideaId) => dispatch => {
@@ -10,6 +14,22 @@ export const getConversation = (ideaId) => dispatch => {
     type: GET_CONVERSATION_SUCCESS,
     payload: conversation
   }), 3000)
+}
+
+export const getConversationMetaData = (conversationId) => dispatch => {
+  dispatch({type: GET_CONVERSATION_METADATA_REQUEST})
+  setTimeout(() => dispatch({
+    type: GET_CONVERSATION_METADATA_SUCCESS,
+    payload: {
+      title: 'Your Idea Title',
+      created: Date.now(),
+      updated: Date.now()
+    }
+  }), 5000)
+}
+
+export const clearConversation = () => dispatch => {
+  dispatch({type: CLEAR_CONVERSATION})
 }
 
 const conversation = [

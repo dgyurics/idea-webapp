@@ -1,8 +1,6 @@
 import {
   GET_IDEAS_REQUEST,
   GET_IDEAS_SUCCESS,
-  GET_IDEA_METADATA_REQUEST,
-  GET_IDEA_METADATA_SUCCESS,
   CREATE_IDEA_REQUEST,
   CREATE_IDEA_SUCCESS
 } from './types.js'
@@ -13,18 +11,6 @@ export const getIdeas = () => dispatch => {
       type: GET_IDEAS_SUCCESS,
       payload: ideas
     }), 3000)
-}
-
-export const getIdeaMetaData = (ideaId) => dispatch => {
-  dispatch({type: GET_IDEA_METADATA_REQUEST})
-  setTimeout(() => dispatch({
-    type: GET_IDEA_METADATA_SUCCESS,
-    payload: {
-      title: 'Your Idea Title',
-      created: Date.now(),
-      updated: Date.now()
-    }
-  }), 5000)
 }
 
 export const createIdea = (ideaObj) => dispatch => {

@@ -4,8 +4,7 @@ import TextArea from '../text-area/TextArea.js'
 import PropTypes from 'prop-types'
 import styles from './ConversationPage.css'
 import { connect } from 'react-redux'
-import { getConversation } from '../../actions/conversationActions.js'
-import { getIdeaMetaData } from '../../actions/ideaActions.js'
+import { getConversation, getConversationMetaData, clearConversation } from '../../actions/conversationActions.js'
 
 class ConversationPage extends Component {
   constructor(props) {
@@ -14,8 +13,12 @@ class ConversationPage extends Component {
 
   componentDidMount() {
     const { conversationId } = this.props.match.params;
-    this.props.getIdeaMetaData(conversationId);
+    this.props.getConversationMetaData(conversationId);
     this.props.getConversation(conversationId);
+  }
+
+  componentWillUnmount() {
+    this.props.clearConversation();
   }
 
   createConversation() {
@@ -50,6 +53,8 @@ class ConversationPage extends Component {
 
 ConversationPage.propTypes = {
   getConversation: PropTypes.func.isRequired,
+  getConversationMetaData: PropTypes.func.isRequired,
+  clearConversation: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   conversation: PropTypes.arrayOf(
     PropTypes.shape({
@@ -61,7 +66,7 @@ ConversationPage.propTypes = {
 
 const mapStateToProps = state => ({
   conversation: state.conversation.conversation,
-  title: state.idea.title
+  title: state.conversation.title
 })
 
-export default connect(mapStateToProps,{getConversation, getIdeaMetaData})(ConversationPage);
+export default connect(mapStateToProps,{getConversation, getConversationMetaData, clearConversation})(ConversationPage);

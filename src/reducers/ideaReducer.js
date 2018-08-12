@@ -1,11 +1,9 @@
 import {
-  GET_IDEAS_SUCCESS,
-  GET_IDEA_METADATA_SUCCESS
+  GET_IDEAS_SUCCESS
 } from '../actions/types'
 
 const initialState = {
-  ideas: [],
-  title: ''
+  ideas: []
 }
 
 export default function(state = initialState, action) {
@@ -14,11 +12,6 @@ export default function(state = initialState, action) {
       return {
         ...state,
         ideas: action.payload
-      }
-    case GET_IDEA_METADATA_SUCCESS:
-      return {
-        ...state,
-        title: action.payload.title
       }
     default:
       return state;
