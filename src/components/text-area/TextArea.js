@@ -5,14 +5,18 @@ import styles from './TextArea.css'
 class TextArea extends Component {
   constructor(state, props) {
     super(state, props);
-    this.state = { value: null };
+    this.state = { value: '' };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
   handleSubmit(event) {
-    if(this.state.value)
+    event.preventDefault();
+    console.log(this.state.value)
+    if(this.state.value) {
       this.props.onSubmit(this.state.value);
+      this.setState({value: '' });
+    }
   }
 
   handleChange(event) {
@@ -21,11 +25,12 @@ class TextArea extends Component {
 
   render() {
     return (
-      <div className="textarea__container">
-        <textarea className="textarea" onChange={this.handleChange}>
-        </textarea>
-        <span className="textarea__submit" onClick={this.handleSubmit}>Submit</span>
-      </div>
+      <form className="textarea__container" onSubmit={this.handleSubmit}>
+        <textarea className="textarea"
+          value={this.state.value}
+          onChange={this.handleChange}/>
+        <input className="textarea__submit" type="submit" value="Submit" />
+      </form>
     )
   }
 }
