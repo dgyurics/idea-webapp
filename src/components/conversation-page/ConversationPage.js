@@ -10,16 +10,13 @@ class ConversationPage extends Component {
   constructor(props) {
     super(props);
     this.onSubmit = this.onSubmit.bind(this);
+    this.props.clearConversation();
   }
 
   componentDidMount() {
     const { conversationId } = this.props.match.params;
     this.props.getConversationMetaData(conversationId);
     this.props.getConversation(conversationId);
-  }
-
-  componentWillUnmount() {
-    this.props.clearConversation();
   }
 
   onSubmit(content) {

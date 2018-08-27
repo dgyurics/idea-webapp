@@ -7,7 +7,6 @@ class Home extends Component {
   constructor(state, props) {
     super(state, props);
   }
-  componentDidMount() {}
 
   render() {
     return (
