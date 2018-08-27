@@ -1,7 +1,8 @@
 import {
   GET_CONVERSATION_SUCCESS,
   GET_CONVERSATION_METADATA_SUCCESS,
-  CLEAR_CONVERSATION
+  CLEAR_CONVERSATION,
+  CREATE_MESSAGE_SUCCESS
 } from '../actions/types'
 
 const initialState = {
@@ -24,6 +25,11 @@ export default function(state = initialState, action) {
         title: action.payload.title,
         created: action.payload.created,
         updated: action.payload.updated
+      }
+    case CREATE_MESSAGE_SUCCESS:
+      return {
+        ...state,
+        conversation: [...state.conversation, action.payload]
       }
     case CLEAR_CONVERSATION:
       return initialState

@@ -4,11 +4,12 @@ import TextArea from '../text-area/TextArea.js'
 import PropTypes from 'prop-types'
 import styles from './ConversationPage.css'
 import { connect } from 'react-redux'
-import { getConversation, getConversationMetaData, clearConversation } from '../../actions/conversationActions.js'
+import { getConversation, createMessage, getConversationMetaData, clearConversation } from '../../actions/conversationActions.js'
 
 class ConversationPage extends Component {
   constructor(props) {
     super(props);
+    this.onSubmit = this.onSubmit.bind(this);
   }
 
   componentDidMount() {
@@ -19,6 +20,10 @@ class ConversationPage extends Component {
 
   componentWillUnmount() {
     this.props.clearConversation();
+  }
+
+  onSubmit(content) {
+    this.props.createMessage(123, content, 'john doe');
   }
 
   createConversation() {
@@ -43,7 +48,7 @@ class ConversationPage extends Component {
           <div className={styles.conversation__main}>
               <h1>{this.props.title}</h1>
               { this.createConversation() }
-              <TextArea/>
+              <TextArea onSubmit={this.onSubmit}/>
           </div>
         </div>
       </div>
@@ -55,6 +60,7 @@ ConversationPage.propTypes = {
   getConversation: PropTypes.func.isRequired,
   getConversationMetaData: PropTypes.func.isRequired,
   clearConversation: PropTypes.func.isRequired,
+  createMessage: PropTypes.func.isRequired,
   title: PropTypes.string.isRequired,
   conversation: PropTypes.arrayOf(
     PropTypes.shape({
@@ -69,4 +75,9 @@ const mapStateToProps = state => ({
   title: state.conversation.title
 })
 
-export default connect(mapStateToProps,{getConversation, getConversationMetaData, clearConversation})(ConversationPage);
+export default connect(mapStateToProps,{
+  clearConversation,
+  createMessage,
+  getConversation,
+  getConversationMetaData
+})(ConversationPage);

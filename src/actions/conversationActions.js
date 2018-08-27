@@ -5,8 +5,27 @@ import {
   GET_CONVERSATION_METADATA_REQUEST,
   GET_CONVERSATION_METADATA_SUCCESS,
   GET_CONVERSATION_METADATA_FAILURE,
+  CREATE_MESSAGE_REQUEST,
+  CREATE_MESSAGE_SUCCESS,
+  CREATE_MESSAGE_FAILURE,
   CLEAR_CONVERSATION
 } from './types.js'
+
+export const createMessage = (ideaId, message, authorId) => dispatch => {
+  dispatch({type: CREATE_MESSAGE_REQUEST});
+
+  setTimeout(() => {
+    const newMessage = {
+      id: ideaId,
+      author: authorId,
+      message: message
+    }
+    dispatch({
+      type: CREATE_MESSAGE_SUCCESS,
+      payload: newMessage
+    })
+  }, 1000)
+}
 
 export const getConversation = (ideaId) => dispatch => {
   dispatch({type: GET_CONVERSATION_REQUEST});

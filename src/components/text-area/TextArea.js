@@ -1,19 +1,22 @@
-import React, { Component, PropTypes } from 'react'
+import React, { Component } from 'react'
+import PropTypes from 'prop-types'
 import styles from './TextArea.css'
 
 class TextArea extends Component {
   constructor(state, props) {
     super(state, props);
+    this.state = { value: null };
     this.handleSubmit = this.handleSubmit.bind(this);
     this.handleChange = this.handleChange.bind(this);
   }
 
-  handleSubmit() {
-    console.log('submit');
+  handleSubmit(event) {
+    if(this.state.value)
+      this.props.onSubmit(this.state.value);
   }
 
   handleChange(event) {
-    console.log(event.target.value);
+    this.setState({value: event.target.value});
   }
 
   render() {
@@ -25,6 +28,10 @@ class TextArea extends Component {
       </div>
     )
   }
+}
+
+TextArea.propTypes = {
+  onSubmit: PropTypes.func.isRequired
 }
 
 export default TextArea;
