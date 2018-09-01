@@ -1,5 +1,5 @@
 import React from 'react'
-import styles from './Cube.css'
+import './Cube.css'
 
 const Cube = () => (
   <div className="cube">

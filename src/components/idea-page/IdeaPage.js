@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import styles from './IdeaPage.css'
-import Card from './tile/tile.js'
+import Tile from './tile/tile.js'
 import { Link } from 'react-router-dom'
 import Navigation from './navigation/Navigation.js'
 import { getIdeas } from '../../actions/ideaActions.js'
@@ -27,10 +27,11 @@ class IdeaPage extends Component {
 
       result.push(
         <Link to={url} key={i}>
-          <Card title={title} author={author} />
+          <Tile title={title} author={author} />
         </Link>
       )
     }
+    result.push(<Tile custom={true} key="uniqueKey"/>); // tile used to create new topic/idea
     return result;
   }
 

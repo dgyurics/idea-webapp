@@ -1,31 +1,46 @@
 import React, { Component } from 'react'
 import PropTypes from 'prop-types'
 import Category from './category/Category.js'
-import styles from './Tile.css'
+import Cube from './cube/Cube.js'
+import './Tile.css'
 
 class Tile extends Component {
   constructor(props) {
     super(props);
   }
 
-  render() {
-    let author = this.props.author;
-    let title = this.props.title;
-
+  defaultTile() {
     return (
-      <div className={styles.tile}>
-        <div className={styles.tile__container}>
-          <span className={styles.tile__title}>{title}</span>
-          <span className={styles.tile__author}>{author}</span>
+      <div className="tile">
+        <div className="tile__container">
+          <span className="tile__title">{this.props.title}</span>
+          <span className="tile__author">{this.props.author}</span>
         </div>
       </div>
+    )
+  }
+
+  customTile() {
+    return (
+      <div className="tile tile--no-border">
+        <Cube/>
+      </div>
+    )
+  }
+
+  render() {
+    return (
+      <span>
+        { this.props.custom ? this.customTile() : this.defaultTile() }
+      </span>
     )
   }
 }
 
 Tile.propTypes = {
-  title: PropTypes.string.isRequired,
-  author: PropTypes.string.isRequired
+  title: PropTypes.string,
+  author: PropTypes.string,
+  custom: PropTypes.bool
 }
 
 export default Tile;
