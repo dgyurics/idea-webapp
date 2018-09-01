@@ -1,0 +1,36 @@
+.cube {
+  height: 6rem;
+  width: 6rem;
+  position: absolute;
+  font-size: 0; /* remove inline-block spacing */
+  cursor: pointer;
+  transform: translate(-50%,-50%);
+  left: 50%;
+  top: 50%;
+}
+
+.cube__element {
+  border-style: solid;
+  border-width: 1px;
+  border-color: #fff;
+  background-color: #f7f7f7;
+  width: 50%;
+  height: 50%;
+  display: inline-block;
+  margin: 0;
+  padding: 0;
+  transition: all 0.2s ease-out;
+}
+
+.cube:hover .cube__element--top-left {
+  transform: translate(-.3rem, -.3rem);
+}
+.cube:hover .cube__element--top-right {
+  transform: translate(.3rem, -.3rem);
+}
+.cube:hover .cube__element--bottom-left {
+  transform: translate(-.3rem, .3rem);
+}
+.cube:hover .cube__element--bottom-right {
+  transform: translate(.3rem, .3rem);
+}
