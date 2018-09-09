@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import Navigation from '../idea-page/navigation/Navigation.js'
+import Navigation from '../navigation/Navigation.js'
 import TextArea from '../text-area/TextArea.js'
 import PropTypes from 'prop-types'
 import styles from './ConversationPage.css'

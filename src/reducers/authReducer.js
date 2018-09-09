@@ -1,7 +1,13 @@
-import { LOGIN_SUCCESS, LOGOUT_REQUEST } from '../actions/types'
+import {
+  LOGIN_SUCCESS,
+  LOGIN_FAILURE,
+  LOGOUT_REQUEST,
+  LOGOUT_SUCCESS}
+from '../actions/types'
 
 const initialState = {
   loggedIn: false,
+  loginError: false,
   sessionId: ''
 }
 
@@ -10,12 +16,20 @@ export default function(state = initialState, action) {
     case LOGIN_SUCCESS:
       return {
         ...state,
-        sessionId: action.payload.sessionId
-      }
-    case LOGOUT_REQUEST:
+        loggedIn: action.payload.loggedIn,
+        sessionId: action.payload.sessionId,
+        loginError: action.payload.loginError
+      };
+    case LOGIN_FAILURE:
       return {
         ...state,
-        loggedIn: false
+        loginError: action.payload.loginError
+      }
+    case LOGOUT_SUCCESS:
+      return {
+        ...state,
+        loggedIn: action.payload.loggedIn,
+        sessionId: action.payload.sessionId
       }
     default:
       return state;

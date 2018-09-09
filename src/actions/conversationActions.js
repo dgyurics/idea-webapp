@@ -24,7 +24,7 @@ export const createMessage = (ideaId, message, authorId) => dispatch => {
       type: CREATE_MESSAGE_SUCCESS,
       payload: newMessage
     })
-  }, 1000)
+  }, 500)
 }
 
 export const getConversation = (ideaId) => dispatch => {
@@ -32,7 +32,7 @@ export const getConversation = (ideaId) => dispatch => {
   setTimeout(() => dispatch({
     type: GET_CONVERSATION_SUCCESS,
     payload: conversation
-  }), 3000)
+  }), 500)
 }
 
 export const getConversationMetaData = (conversationId) => dispatch => {
@@ -44,7 +44,7 @@ export const getConversationMetaData = (conversationId) => dispatch => {
       created: Date.now(),
       updated: Date.now()
     }
-  }), 5000)
+  }), 500)
 }
 
 export const clearConversation = () => dispatch => {

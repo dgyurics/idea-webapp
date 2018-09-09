@@ -7,7 +7,7 @@ import store from './store/store.js';
 import HomePage from './components/home-page/HomePage.js'
 import IdeaPage from './components/idea-page/IdeaPage.js'
 import ConversationPage from './components/conversation-page/ConversationPage.js'
-import AuthPage from './components/auth/auth.js'
+import AuthPage from './components/authentication/authentication.js'
 
 ReactDOM.render(
   <Provider store={store}>
@@ -16,7 +16,7 @@ ReactDOM.render(
         <Route exact path="/" component={HomePage} />
         <Route path="/idea" component={IdeaPage} />
         <Route path="/conversation/:conversationId" component={ConversationPage} />
-        <Route path="/auth" component={AuthPage} />
+        <Route path="/authentication" component={AuthPage} />
       </Switch>
     </Router>
   </Provider>,
