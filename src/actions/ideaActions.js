@@ -10,7 +10,7 @@ export const getIdeas = () => dispatch => {
   setTimeout(() => dispatch({
       type: GET_IDEAS_SUCCESS,
       payload: ideas
-    }), 3000)
+    }), 500)
 }
 
 export const createIdea = (ideaObj) => dispatch => {

@@ -3,7 +3,7 @@ import PropTypes from 'prop-types'
 import styles from './IdeaPage.css'
 import Tile from './tile/tile.js'
 import { Link } from 'react-router-dom'
-import Navigation from './navigation/Navigation.js'
+import Navigation from '../navigation/Navigation.js'
 import { getIdeas } from '../../actions/ideaActions.js'
 import { connect } from 'react-redux'
 
@@ -31,7 +31,11 @@ class IdeaPage extends Component {
         </Link>
       )
     }
-    result.push(<Tile custom={true} key="uniqueKey"/>); // tile used to create new topic/idea
+
+    /* This element is used as a "create new topic" button */
+    if(result.length > 0)
+      result.push(<Tile custom={true} key="uniqueKey"/>);
+
     return result;
   }
 
