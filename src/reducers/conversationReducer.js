@@ -1,15 +1,14 @@
 import {
   GET_CONVERSATION_SUCCESS,
-  GET_CONVERSATION_METADATA_SUCCESS,
-  CLEAR_CONVERSATION,
-  CREATE_MESSAGE_SUCCESS
+  CREATE_MESSAGE_SUCCESS,
+  CLEAR_CONVERSATION
 } from '../actions/types'
 
 const initialState = {
-  conversation: [],
-  title: '',
-  created: null,
-  updated: null
+  conversation: {
+    title: "",
+    messages: []
+  }
 }
 
 export default function(state = initialState, action) {
@@ -19,17 +18,13 @@ export default function(state = initialState, action) {
         ...state,
         conversation: action.payload
       }
-    case GET_CONVERSATION_METADATA_SUCCESS:
-      return {
-        ...state,
-        title: action.payload.title,
-        created: action.payload.created,
-        updated: action.payload.updated
-      }
     case CREATE_MESSAGE_SUCCESS:
       return {
         ...state,
-        conversation: [...state.conversation, action.payload]
+        conversation: {
+          ...state.conversation,
+          messages: [...state.conversation.messages, action.payload]
+        }
       }
     case CLEAR_CONVERSATION:
       return initialState

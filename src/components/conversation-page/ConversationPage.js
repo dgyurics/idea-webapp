@@ -4,7 +4,7 @@ import TextArea from '../text-area/TextArea.js'
 import PropTypes from 'prop-types'
 import styles from './ConversationPage.css'
 import { connect } from 'react-redux'
-import { getConversation, createMessage, getConversationMetaData, clearConversation } from '../../actions/conversationActions.js'
+import { getConversation, createMessage, clearConversation } from '../../actions/conversationActions.js'
 
 class ConversationPage extends Component {
   constructor(props) {
@@ -15,7 +15,6 @@ class ConversationPage extends Component {
 
   componentDidMount() {
     const { conversationId } = this.props.match.params;
-    this.props.getConversationMetaData(conversationId);
     this.props.getConversation(conversationId);
   }
 
@@ -25,7 +24,7 @@ class ConversationPage extends Component {
 
   createConversation() {
     let result = []
-    let conversation = this.props.conversation;
+    let conversation = this.props.conversation.messages;
 
     for(let i=0; i<conversation.length; i++) {
       result.push(
@@ -43,7 +42,7 @@ class ConversationPage extends Component {
         <Navigation/>
         <div className={styles.conversation__container}>
           <div className={styles.conversation__main}>
-              <h1>{this.props.title}</h1>
+              <h1>{this.props.conversation.title}</h1>
               { this.createConversation() }
               <TextArea onSubmit={this.onSubmit}/>
           </div>
@@ -55,26 +54,25 @@ class ConversationPage extends Component {
 
 ConversationPage.propTypes = {
   getConversation: PropTypes.func.isRequired,
-  getConversationMetaData: PropTypes.func.isRequired,
   clearConversation: PropTypes.func.isRequired,
   createMessage: PropTypes.func.isRequired,
-  title: PropTypes.string.isRequired,
-  conversation: PropTypes.arrayOf(
-    PropTypes.shape({
-      author: PropTypes.string.isRequired,
-      message: PropTypes.string.isRequired
-    })
-  ).isRequired
+  conversation: PropTypes.shape({
+    title: PropTypes.string.isRequired,
+    messages:   PropTypes.arrayOf(
+      PropTypes.shape({
+        author: PropTypes.string.isRequired,
+        message: PropTypes.string.isRequired
+      })
+    ).isRequired
+  })
 }
 
 const mapStateToProps = state => ({
-  conversation: state.conversation.conversation,
-  title: state.conversation.title
+  conversation: state.conversation.conversation
 })
 
 export default connect(mapStateToProps,{
   clearConversation,
   createMessage,
-  getConversation,
-  getConversationMetaData
+  getConversation
 })(ConversationPage);

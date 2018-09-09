@@ -7,7 +7,6 @@ import {
   LOGOUT_FAILURE
 } from './types.js'
 
-
 export const login = (username, password) => (dispatch) => {
   dispatch({type: LOGIN_REQUEST});
   setTimeout(() => {

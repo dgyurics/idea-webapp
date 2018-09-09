@@ -12,7 +12,6 @@ class TextArea extends Component {
 
   handleSubmit(event) {
     event.preventDefault();
-    console.log(this.state.value)
     if(this.state.value) {
       this.props.onSubmit(this.state.value);
       this.setState({value: '' });
