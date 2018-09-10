@@ -28,7 +28,7 @@ class TextArea extends Component {
         <textarea className="textarea"
           value={this.state.value}
           onChange={this.handleChange}/>
-        <input className="textarea__submit" type="submit" value="Submit" />
+        <input className="textarea__submit button" type="submit" value="Submit" />
       </form>
     )
   }

@@ -4,7 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { login, logout } from '../../actions/authActions.js'
 import { createHashHistory } from 'history'
-import './authentication.css'
+import './Authentication.css'
 
 class Authentication extends Component {
   constructor(props) {

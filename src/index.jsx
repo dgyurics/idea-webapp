@@ -7,7 +7,7 @@ import store from './store/store.js';
 import HomePage from './components/home-page/HomePage.js'
 import IdeaPage from './components/idea-page/IdeaPage.js'
 import ConversationPage from './components/conversation-page/ConversationPage.js'
-import AuthPage from './components/authentication/authentication.js'
+import AuthPage from './components/authentication/Authentication.js'
 
 ReactDOM.render(
   <Provider store={store}>

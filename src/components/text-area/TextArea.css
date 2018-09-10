@@ -15,17 +15,19 @@
 .textarea:focus {
   border: 1px solid #000;
 }
-.textarea__submit {
-  padding: .5rem;
-  padding-right: 1rem;
-  padding-left: 1rem;
-  margin: 1rem 0 1rem;
-  font-size: 0.8rem;
+.button {
   display: block;
-  cursor: pointer;
+  margin: 3rem auto;
+  background: none;
+  padding: .5rem 1rem;
+  border: 1px solid #000;
+  color: #000;
+  font-size: 0.9rem;
+  transition: all 0.2s ease-in-out;
   float: right;
-  border: 1px solid #999;
 }
-.textarea__submit:hover {
-  background-color: #f1f1f1;
+.button:hover,
+.button:focus {
+  color: #fff;
+  background-color: #000;
 }
