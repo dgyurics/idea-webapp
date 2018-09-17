@@ -4,7 +4,8 @@ import {
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
   LOGOUT_SUCCESS,
-  LOGOUT_FAILURE
+  LOGOUT_FAILURE,
+  LOGIN_CLEAR_ERRORS
 } from './types.js'
 
 export const login = (username, password) => (dispatch) => {
@@ -25,6 +26,14 @@ export const login = (username, password) => (dispatch) => {
       }})
   }, 700);
 
+}
+
+export const clear = () => dispatch => {
+    dispatch({
+      type: LOGIN_CLEAR_ERRORS, payload: {
+        loginError: false
+      }
+    })
 }
 
 export const logout = (username) => dispatch => {

@@ -16,8 +16,11 @@
   border-bottom: 1px solid #5d5d5d;
   text-align: center;
 }
-.auth_input:focus {
-  /*border-color: #00c3c5;*/
+.auth_input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+.auth_input--error {
+  color: red;
 }
 .auth_username {
   width: 22rem;

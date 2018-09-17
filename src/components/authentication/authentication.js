@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import Navigation from '../navigation/Navigation.js'
 import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
-import { login, logout } from '../../actions/authActions.js'
+import { login, logout, clear } from '../../actions/authActions.js'
 import { createHashHistory } from 'history'
 import './Authentication.css'
 
@@ -19,11 +19,8 @@ class Authentication extends Component {
     this.handleLogout = this.handleLogout.bind(this);
   }
 
-  /* FIXME */
   componentDidUpdate(prevProps, prevState) {
-    if(prevProps.loginError != this.props.loginError && this.props.loginError)
-      console.error('error logging in')
-    if(prevProps.loggedIn != this.props.loggedIn && this.props.loggedIn) {
+    if(this.props.loggedIn) {
       const history = createHashHistory()
       this.props.history.push('/idea')
     }
@@ -31,6 +28,9 @@ class Authentication extends Component {
 
   handleChange(event) {
     this.setState({ [event.target.name]: event.target.value})
+
+    if(this.props.loginError)
+      this.props.clear();
   }
 
   handleSubmit(event) {
@@ -44,11 +44,20 @@ class Authentication extends Component {
   }
 
   contentToRender() {
+    const showError = this.props.loginError;
+
     if (!this.props.loggedIn) {
       return (
         <form onSubmit={this.handleSubmit} className="auth_group">
-          <input type="text" name="username" value={this.state.value} onChange={this.handleChange} className="auth_input auth_username" />
-          <input type="password" name="password" onChange={this.handleChange} className="auth_input auth_password" />
+          <input type="text"
+            name="username"
+            value={this.state.value}
+            onChange={this.handleChange}
+            className={"auth_input auth_username " + (showError ? "auth_input--error" : "")} />
+          <input type="password"
+            name="password"
+            onChange={this.handleChange}
+            className={"auth_input auth_password " + (showError ? "auth_input--error" : "")} />
           <input type="submit" name="login" value="Submit" className="auth_submit"/>
         </form>
       )
@@ -73,7 +82,8 @@ class Authentication extends Component {
 
 Authentication.propTypes = {
   login: PropTypes.func.isRequired,
-  logout: PropTypes.func.isRequired
+  logout: PropTypes.func.isRequired,
+  clear: PropTypes.func.isRequired
 }
 
 const mapStateToProps = state => ({
@@ -82,4 +92,4 @@ const mapStateToProps = state => ({
   loginError: state.auth.loginError
 })
 
-export default connect(mapStateToProps,{login, logout})(Authentication);
+export default connect(mapStateToProps,{login, logout, clear})(Authentication);

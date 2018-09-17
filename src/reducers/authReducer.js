@@ -2,7 +2,9 @@ import {
   LOGIN_SUCCESS,
   LOGIN_FAILURE,
   LOGOUT_REQUEST,
-  LOGOUT_SUCCESS}
+  LOGOUT_SUCCESS,
+  LOGIN_CLEAR_ERRORS
+}
 from '../actions/types'
 
 const initialState = {
@@ -30,6 +32,11 @@ export default function(state = initialState, action) {
         ...state,
         loggedIn: action.payload.loggedIn,
         sessionId: action.payload.sessionId
+      }
+    case LOGIN_CLEAR_ERRORS:
+      return {
+        ...state,
+        loginError: action.payload.loginError
       }
     default:
       return state;
