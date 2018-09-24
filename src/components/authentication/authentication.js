@@ -4,6 +4,8 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { login, logout, clear } from '../../actions/authActions.js'
 import { createHashHistory } from 'history'
+import { Icon } from 'react-icons-kit'
+import { info } from 'react-icons-kit/feather/info'
 import './Authentication.css'
 
 class Authentication extends Component {
@@ -15,7 +17,7 @@ class Authentication extends Component {
     }
     this.handleChange = this.handleChange.bind(this);
     this.handleSubmit = this.handleSubmit.bind(this);
-    this.contentToRender = this.contentToRender.bind(this);
+    this.loginPage = this.loginPage.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
   }
 
@@ -43,7 +45,7 @@ class Authentication extends Component {
     this.props.logout();
   }
 
-  contentToRender() {
+  loginPage() {
     const showError = this.props.loginError;
 
     if (!this.props.loggedIn) {
@@ -72,8 +74,11 @@ class Authentication extends Component {
     return (
       <div>
         <Navigation/>
-        <div className="auth_container">
-          {this.contentToRender()}
+        <div className="auth__container">
+          {this.loginPage()}
+          <div className="auth__info__icon">
+            <Icon size={'100%'} icon={info}/>
+          </div>
         </div>
       </div>
     )

@@ -1,5 +1,13 @@
-.auth_container {
+.auth__container {
   padding: 1.5rem;
+}
+.auth__info__icon {
+  cursor: pointer;
+  width: 1.5rem;
+  height: 1.5rem;
+  position: absolute;
+  bottom: 1.5rem;
+  right: 1.8rem;
 }
 .auth_group {
   position: absolute;
