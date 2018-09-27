@@ -17,8 +17,8 @@ export const createIdea = (ideaObj) => dispatch => {
   dispatch({type: CREATE_IDEA_REQUEST})
   setTimeout(() => dispatch({
       type: CREATE_IDEA_SUCCESS,
-      payload: {...ideaObj, id: 1234}
-  }))
+      payload: {id: 1234, title: ideaObj.title, author: 'Oscar Øslo'}
+  }), 1000)
 }
 
 const ideas = [
