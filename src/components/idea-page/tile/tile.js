@@ -10,9 +10,12 @@ class Tile extends Component {
   }
 
   defaultTile() {
+    let style = {}
+    style.backgroundImage = this.props.imgUrl ? 'url(' + this.props.imgUrl + ')' : null
+
     return (
-      <div className="tile">
-        <div className="tile__container">
+      <div className="tile tile--photo" style={style}>
+        <div className="tile__container tile__container--photo">
           <span className="tile__title">{this.props.title}</span>
           <span className="tile__author">{this.props.author}</span>
         </div>
@@ -22,7 +25,7 @@ class Tile extends Component {
 
   customTile() {
     return (
-      <div className="tile tile--no-border">
+      <div className="tile tile--no-border tile--no-hover">
         <Cube/>
       </div>
     )
@@ -40,6 +43,7 @@ class Tile extends Component {
 Tile.propTypes = {
   title: PropTypes.string,
   author: PropTypes.string,
+  imgUrl: PropTypes.string,
   custom: PropTypes.bool
 }
 

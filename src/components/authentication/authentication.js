@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 import PropTypes from 'prop-types'
 import { login, logout, clear } from '../../actions/authActions.js'
 import { createHashHistory } from 'history'
+import Modal from '../modal/Modal.js'
 import { Icon } from 'react-icons-kit'
 import { info } from 'react-icons-kit/feather/info'
 import './Authentication.css'
@@ -12,6 +13,7 @@ class Authentication extends Component {
   constructor(props) {
     super(props)
     this.state = {
+      modalOpen: false,
       username: '',
       password: ''
     }
@@ -19,6 +21,7 @@ class Authentication extends Component {
     this.handleSubmit = this.handleSubmit.bind(this);
     this.loginPage = this.loginPage.bind(this);
     this.handleLogout = this.handleLogout.bind(this);
+    this.toggleModal = this.toggleModal.bind(this);
   }
 
   componentDidUpdate(prevProps, prevState) {
@@ -51,15 +54,8 @@ class Authentication extends Component {
     if (!this.props.loggedIn) {
       return (
         <form onSubmit={this.handleSubmit} className="auth_group">
-          <input type="text"
-            name="username"
-            value={this.state.value}
-            onChange={this.handleChange}
-            className={"auth_input auth_username " + (showError ? "auth_input--error" : "")} />
-          <input type="password"
-            name="password"
-            onChange={this.handleChange}
-            className={"auth_input auth_password " + (showError ? "auth_input--error" : "")} />
+          <input type="text" name="username" value={this.state.value} onChange={this.handleChange} className={"auth_input auth_username " + (showError ? "auth_input--error" : "")} />
+          <input type="password" name="password" onChange={this.handleChange} className={"auth_input auth_password " + (showError ? "auth_input--error" : "")} />
           <input type="submit" name="login" value="Submit" className="auth_submit"/>
         </form>
       )
@@ -70,6 +66,10 @@ class Authentication extends Component {
     }
   }
 
+  toggleModal() {
+    this.setState({modalOpen: !this.state.modalOpen})
+  }
+
   render() {
     return (
       <div>
@@ -77,8 +77,12 @@ class Authentication extends Component {
         <div className="auth__container">
           {this.loginPage()}
           <div className="auth__info__icon">
-            <Icon size={'100%'} icon={info}/>
+            <Icon size={'100%'} icon={info} onClick={this.toggleModal}/>
           </div>
+          {/* Registration + Forgot Password modal */}
+          <Modal toggle={this.state.modalOpen} onClose={this.toggleModal}>
+            <div className="auth__modal">Coming soon</div>
+          </Modal>
         </div>
       </div>
     )

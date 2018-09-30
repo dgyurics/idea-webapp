@@ -11,14 +11,8 @@ import { connect } from 'react-redux'
 class IdeaPage extends Component {
   constructor(props) {
     super(props);
-    this.state = {
-      modalOpen: false,
-      newIdeaTitle: '',
-      newIdeaContent: ''
-    }
-    this.submitNewIdea = this.submitNewIdea.bind(this);
+    this.state = { modalOpen: false }
     this.toggleModal = this.toggleModal.bind(this);
-    this.handleChange = this.handleChange.bind(this);
   }
 
   componentDidMount() {
@@ -26,68 +20,28 @@ class IdeaPage extends Component {
   }
 
   createIdeaBlocks() {
-    let result = []
-    let ideas = this.props.ideas;
+    let blocks = []
 
-    for (let i=0; i<ideas.length; i++) {
-      const title = ideas[i].title;
-      const author = ideas[i].author;
-      const url = '/conversation/' + i;
-
-      result.push(
-        <Link to={url} key={i}>
-          <Tile title={title} author={author} />
+    this.props.ideas.forEach(idea => {
+      blocks.push(
+        <Link key={idea.id} to={'/conversation/' + idea.id}>
+          <Tile title={idea.title} author={idea.author} imgUrl={idea.imgUrl}/>
         </Link>
       )
-    }
+    })
 
     /* This element is used as a "create new topic" button */
-    if(result.length > 0)
-      result.push(
-        <div key="uniqueKey" className="idea__new" onClick={this.toggleModal}>
+    if(blocks.length > 0)
+      blocks.push(
+        <div key="newIdeaBlock" className="idea__new__button" onClick={this.toggleModal}>
           <Tile custom={true}/>
         </div>);
 
-    return result;
-  }
-
-  handleChange(event) {
-    this.setState({ [event.target.name]: event.target.value})
-  }
-
-  submitNewIdea(event) {
-    event.preventDefault();
-    this.props.createIdea(
-      { title: this.state.newIdeaTitle,
-        content: this.state.newIdeaContent});
-    this.setState({modalOpen: false, newIdeaTitle: '', newIdeaContent: ''})
+    return blocks;
   }
 
   toggleModal() {
     this.setState({modalOpen: !this.state.modalOpen})
-  }
-
-  createIdeaModal() {
-    return (
-      <Modal toggle={this.state.modalOpen} onClose={this.toggleModal}>
-        <form onSubmit={this.submitNewIdea} className="idea__group">
-          <input
-            type="text"
-            name="newIdeaTitle"
-            value={this.state.newIdeaTitle}
-            onChange={this.handleChange}
-            className="idea__group__input"
-            placeholder="Header"/>
-          <textarea
-            name="newIdeaContent"
-            placeholder="Content..."
-            value={this.state.newIdeaContent}
-            onChange={this.handleChange}
-            className="idea__group__text__area"/>
-          <input type="submit" name="submit" value="Submit" className="idea__group__submit"/>
-        </form>
-      </Modal>
-    )
   }
 
   render() {
@@ -97,7 +51,9 @@ class IdeaPage extends Component {
         <div className={styles.ideaMain}>
           { this.createIdeaBlocks() }
         </div>
-          { this.createIdeaModal() }
+        <Modal toggle={this.state.modalOpen} onClose={this.toggleModal}>
+          <div className="idea__new__modal">Coming soon</div>
+        </Modal>
       </div>
     )
   }

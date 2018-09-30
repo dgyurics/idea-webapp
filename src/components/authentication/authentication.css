@@ -51,3 +51,7 @@
   color: #fff;
   background-color: #000;
 }
+.auth__modal {
+  padding: 5rem 8rem;
+  letter-spacing: 1.3px;
+}
