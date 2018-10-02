@@ -4,16 +4,12 @@
   border: 1px solid #d8d8d899;
   background-color: #f7f7f7;
   margin: 0.5rem;
-  min-height: 180px;
+  min-height: 12vw;
   width: calc(25% - 1.0rem);
-  min-width: 50px;
   overflow: hidden;
   color: #000;
   cursor: pointer;
   transition: .2s transform linear;
-}
-
-.tile--photo {
   border: none;
   background-size: cover;
   background-position: center center;
@@ -24,7 +20,7 @@
 }
 
 .tile:hover {
-  transform: scale(1.005);
+  transform: scale(1.01);
 }
 
 .tile--no-border {
@@ -40,12 +36,8 @@
 
 .tile__container {
   width: 100%;
-  padding: 15px;
+  padding: 1vw;
   position: absolute;
-}
-
-.tile__container--photo {
-  padding: 15px;
   bottom: 0;
   text-align: right;
   color: #fff;
@@ -59,12 +51,14 @@
   display: block;
   text-overflow: ellipsis;
   overflow: hidden;
+  text-shadow: 2px 2px 4px #000000;
 }
 .tile__title {
+  font-size: 0.9rem;
   letter-spacing: 1.7px;
 }
 .tile__author {
-  font-size: 0.8rem;
+  font-size: 0.7rem;
   letter-spacing: 1.2px;
 }
 

@@ -14,8 +14,8 @@ class Tile extends Component {
     style.backgroundImage = this.props.imgUrl ? 'url(' + this.props.imgUrl + ')' : null
 
     return (
-      <div className="tile tile--photo" style={style}>
-        <div className="tile__container tile__container--photo">
+      <div className="tile" style={style}>
+        <div className="tile__container">
           <span className="tile__title">{this.props.title}</span>
           <span className="tile__author">{this.props.author}</span>
         </div>
