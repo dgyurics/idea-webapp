@@ -3,7 +3,12 @@ import PropTypes from 'prop-types'
 import './Modal.css'
 
 class Modal extends Component {
-  handleClose = (e) => {
+  constructor(props) {
+    super(props);
+    this.handleClose = this.handleClose.bind(this);
+  }
+
+  handleClose(e) {
     event.preventDefault();
     if(e.target === e.currentTarget && this.props.onClose)
         this.props.onClose()
