@@ -12,7 +12,6 @@
 }
 
 html, body, #react-div {
-  display: block;
   width: 100%;
   height: 100%;
   font-size: 14px;
@@ -66,4 +65,13 @@ textarea, select, input, button { outline: none; }
 
 :local(.headerlrg) {
   font-size: 17vmax;
+  font-weight: 500;
+}
+
+.svg-icon {
+    height: 1em;
+    margin-top: -4px;
+    pointer-events: none;
+    vertical-align: middle;
+    width: 1em;
 }

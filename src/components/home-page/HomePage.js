@@ -2,6 +2,8 @@ import React from 'react'
 import Header from './header/Header.js'
 import Footer from './footer/Footer.js'
 import styles from './HomePage.css'
+import './normalize.css'
+import './skeleton.css'
 
 const Home = () => {
   return (

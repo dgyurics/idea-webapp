@@ -1,16 +1,26 @@
-:local(.footer) {
+.footer {
   color: rgba(255, 255, 255, 0.73);
   font-family: 'Poiret One', cursive;
   bottom: 0;
   position: absolute;
-  font-size: .7rem;
+  font-size: 1.2rem;
   width: 100%;
   text-align: center;
   padding-bottom: 7px;
   margin: 0;
   display: block;
+  -webkit-touch-callout: none; /* iOS Safari */
+    -webkit-user-select: none; /* Safari */
+     -khtml-user-select: none; /* Konqueror HTML */
+       -moz-user-select: none; /* Firefox */
+        -ms-user-select: none; /* Internet Explorer/Edge */
+            user-select: none; /* Non-prefixed version, currently
+                                  supported by Chrome and Opera */
 }
 
-:local(.footer span) {
-  cursor: pointer;
+/* iPhone X or smaller */
+@media only screen and (max-device-width: 812px) {
+    .footer{
+      font-size: 3vmin;
+    }
 }

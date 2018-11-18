@@ -1,6 +1,7 @@
 .modal__container--visible {
   display: block !important;
 }
+/* backdrop */
 .modal__container {
   position: fixed;
   display: none;
@@ -11,8 +12,9 @@
   left: 0;
   background-color: #000000c4;
 }
-/* rename until bootstrap removed */
-.modal__m {
+/* actual modal */
+.modal {
+  color: #000;
   position: fixed;
   display: block;
   z-index: 2;
@@ -20,4 +22,18 @@
   left: 50%;
   transform: translate(-50%,-50%);
   background-color: #fff;
+  letter-spacing: 1.3px;
+  padding: 5rem 8rem;
+}
+.modal__icon {
+  line-height: 1;
+  float: right;
+  cursor: pointer;
+  position: absolute;
+  right: 0;
+  top: 0;
+  margin: 1rem;
+}
+
+@media only screen and (max-device-width: 612px) {
 }

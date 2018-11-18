@@ -2,6 +2,7 @@
   position: relative;
   display: inline-block;
   border: 1px solid #d8d8d899;
+  border-radius: 2px;
   background-color: #f7f7f7;
   margin: 0.5rem;
   min-height: 12vw;
@@ -45,7 +46,7 @@
 
 .tile__title,
 .tile__author {
-  font-weight: 300;
+  font-weight: 400;
   line-height: 2;
   white-space: nowrap;
   display: block;
@@ -54,7 +55,7 @@
   text-shadow: 2px 2px 4px #000000;
 }
 .tile__title {
-  font-size: 0.9rem;
+  font-size: 1rem;
   letter-spacing: 1.7px;
 }
 .tile__author {
