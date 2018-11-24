@@ -1,4 +1,9 @@
-:local(.container) {
+/*
+  Mobile first
+  vmax: 1/100th of the largest side
+  @media screen and (min-width: 1024px): screens larger than mobile phone
+*/
+.home-container {
   margin: 0;
   padding: 0;
   display: block;
@@ -9,51 +14,60 @@
   color: #eee;
 }
 
-:local(.header) {
+.home__header__icon__container {
+  position: absolute;
+  right: 0;
+  cursor: pointer;
+  height: 2vmax;
+  width: 2vmax;
+  margin: 35px;
+}
+
+.home__header__icon__container:hover {
+  text-decoration: none;
+  color: white;
+  opacity: 0.5;
+}
+
+.coming-soon {
+  white-space: nowrap;
+}
+
+.home-logo {
   font-family: 'Poiret One', cursive;
   position: relative;
-  font-size: 1vmax;
+  font-size: 1.5vmax;
   float: left;
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
 }
 
-:local(.headerlrg) {
+.home-logo--lrg {
   font-size: 17vmax;
   font-weight: 500;
 }
 
-:local(.footer) {
+.home-footer {
   color: rgba(255, 255, 255, 0.73);
   font-family: 'Poiret One', cursive;
   bottom: 0;
   position: absolute;
-  font-size: 1.2rem;
+  font-size: 1.5vmax;
   width: 100%;
   text-align: center;
   padding-bottom: 7px;
   margin: 0;
   display: block;
-  -webkit-touch-callout: none; /* iOS Safari */
-    -webkit-user-select: none; /* Safari */
-     -khtml-user-select: none; /* Konqueror HTML */
-       -moz-user-select: none; /* Firefox */
-        -ms-user-select: none; /* Internet Explorer/Edge */
-            user-select: none; /* Non-prefixed version, currently
-                                  supported by Chrome and Opera */
 }
 
-/* iPhone X or smaller */
-@media only screen and (max-device-width: 812px) {
-    :local(.footer){
-      font-size: 3vmin;
-    }
+/* screens larger than mobile phone */
+@media screen and (min-width: 1024px) {
+  .home__header__icon__container {
+    height: 1.5vmax;
+    width: 1.5vmax;
+  }
+  .home-footer {
+    font-size: 1.0vmax;
+  }
 }
