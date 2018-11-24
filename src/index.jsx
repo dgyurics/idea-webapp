@@ -1,8 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
 import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import { Provider } from 'react-redux';
-import store from './store/store.js';
+import { Provider } from 'react-redux'
+import store from './store/store.js'
+
+import './style/index.css'
+import './style/normalize.css'
+import './style/skeleton.css'
 
 import HomePage from './components/home-page/HomePage.js'
 import IdeaPage from './components/idea-page/IdeaPage.js'
