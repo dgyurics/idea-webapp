@@ -17,23 +17,31 @@
   color: #000;
   position: fixed;
   display: block;
+  text-align: center;
+  width: calc(90% - 16rem);
   z-index: 2;
-  top: 50%;
+  top: 40%;
   left: 50%;
+  font-size: 2vmax;
   transform: translate(-50%,-50%);
   background-color: #fff;
   letter-spacing: 1.3px;
-  padding: 5rem 8rem;
+  padding: 14rem 8rem;
 }
-.modal__icon {
-  line-height: 1;
-  float: right;
-  cursor: pointer;
+.modal__icon__container {
   position: absolute;
   right: 0;
   top: 0;
-  margin: 1rem;
+  cursor: pointer;
+  height: 3vmax;
+  width: 3vmax;
+  margin: 20px;
 }
 
-@media only screen and (max-device-width: 612px) {
+/* screens larger than mobile phone */
+@media screen and (min-width: 1024px) {
+  .modal__icon__container {
+    height: 2vmax;
+    width: 2vmax;
+  }
 }

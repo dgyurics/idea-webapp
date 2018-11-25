@@ -28,9 +28,9 @@ class Modal extends Component {
       <div onClick={this.handleClose}
         className={"modal__container " + (show ? "modal__container--visible" : "")}>
         <div className="modal">
-          <span className="modal__icon" onClick={this.exit}>
-            <Icon icon={x}/>
-          </span>
+          <div className="modal__icon__container" onClick={this.exit}>
+            <Icon size={'100%'} icon={x}/>
+          </div>
           {this.props.children}
         </div>
       </div>

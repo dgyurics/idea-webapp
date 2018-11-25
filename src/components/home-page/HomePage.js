@@ -28,7 +28,7 @@ class Home extends Component {
           <span>Dennis Gyurics</span>
         </div>
         <Modal toggle={this.state.modalOpen} onClose={this.toggleModal}>
-          <div className="coming-soon">January 1<sup>st</sup> 2019</div>
+          <div className="coming-soon no-touch">January 1<sup>st</sup> 2019</div>
         </Modal>
       </div>
     );
