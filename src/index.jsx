@@ -1,28 +1,24 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
-import { BrowserRouter as Router, Switch, Route, Redirect } from 'react-router-dom'
-import { Provider } from 'react-redux'
-import store from './store/store.js'
+import React from 'react';
+import ReactDOM from 'react-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 
-import './style/index.css'
-import './style/normalize.css'
-import './style/skeleton.css'
+import './style/index.css';
+import './style/normalize.css';
+import './style/skeleton.css';
 
-import HomePage from './components/home-page/HomePage.js'
-import IdeaPage from './components/idea-page/IdeaPage.js'
-import ConversationPage from './components/conversation-page/ConversationPage.js'
-import AuthPage from './components/authentication/Authentication.js'
+import HomePage from './components/home-page/HomePage';
+import AuthPage from './components/authentication/Authentication';
+import ContactPage from './components/contact-page/ContactPage';
+
+import './style/favicon.ico';
 
 ReactDOM.render(
-  <Provider store={store}>
-    <Router>
-      <Switch>
-        <Route exact path="/" component={HomePage} />
-        <Route path="/idea" component={IdeaPage} />
-        <Route path="/conversation/:conversationId" component={ConversationPage} />
-        <Route path="/authentication" component={AuthPage} />
-      </Switch>
-    </Router>
-  </Provider>,
-  document.getElementById('react-div')
+  <Router>
+    <Switch>
+      <Route exact path="/" component={HomePage} />
+      <Route path="/authentication" component={AuthPage} />
+      <Route path="/contact" component={ContactPage} />
+    </Switch>
+  </Router>,
+  document.getElementById('react-div'),
 );

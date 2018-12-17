@@ -1,15 +1,7 @@
-version: '3.5'
-
+version: '3'
 services:
-  sample-app:
-    container_name: sample-app
-    build:
-      context: .
-      dockerfile: Dockerfile
-    volumes:
-      - '.:/usr/src/app'
-      - '/usr/src/app/node_modules'
+  nginx:
+    container_name: nginx
+    build: .
     ports:
-      - '8081:8081'
-    environment:
-      - NODE_ENV=development
+     - "8082:80"

@@ -18,30 +18,23 @@
   position: fixed;
   display: block;
   text-align: center;
-  width: calc(90% - 16rem);
+  width: 90%;
   z-index: 2;
-  top: 40%;
+  top: 35%;
   left: 50%;
-  font-size: 2vmax;
   transform: translate(-50%,-50%);
   background-color: #fff;
-  letter-spacing: 1.3px;
-  padding: 14rem 8rem;
 }
-.modal__icon__container {
-  position: absolute;
-  right: 0;
-  top: 0;
-  cursor: pointer;
-  height: 3vmax;
-  width: 3vmax;
-  margin: 20px;
+.modal__content {
+  padding: 5rem;
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  white-space: nowrap;
 }
-
-/* screens larger than mobile phone */
-@media screen and (min-width: 1024px) {
-  .modal__icon__container {
-    height: 2vmax;
-    width: 2vmax;
+/* Larger than desktop */
+@media (min-width: 1000px) {
+  .modal {
+    width: 50%;
   }
 }

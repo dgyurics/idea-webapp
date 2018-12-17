@@ -120,13 +120,18 @@ html is set to 62.5% so that all the REM measurements throughout Skeleton
 are based on 10px sizing. So basically 1.5rem = 15px :) */
 html {
   font-size: 62.5%; }
+/* high resolution */
+@media (min-width: 1900px) {
+  html {
+    font-size: 87.5%;
+  }
+}
 body {
   font-size: 1.5em; /* currently ems cause chrome bug misinterpreting rems on body element */
   line-height: 1.6;
   font-weight: 400;
   font-family: "Raleway", "HelveticaNeue", "Helvetica Neue", Helvetica, Arial, sans-serif;
   color: #222; }
-
 
 /* Typography
 –––––––––––––––––––––––––––––––––––––––––––––––––– */
@@ -183,10 +188,21 @@ input[type="button"] {
   text-decoration: none;
   white-space: nowrap;
   background-color: transparent;
-  border-radius: 4px;
   border: 1px solid #bbb;
   cursor: pointer;
   box-sizing: border-box; }
+  /* high resolution */
+  @media (min-width: 1900px) {
+    .button,
+    button,
+    input[type="submit"],
+    input[type="reset"],
+    input[type="button"] {
+      height: 50px;
+      line-height: 50px;
+      font-size: 1rem;
+    }
+  }
 .button:hover,
 button:hover,
 input[type="submit"]:hover,
@@ -238,7 +254,8 @@ select {
   padding: 6px 10px; /* The 6px vertically centers text on FF, ignored by Webkit */
   background-color: #fff;
   border: 1px solid #D1D1D1;
-  border-radius: 4px;
+  margin-top: 10px;
+  font-weight: 100;
   box-shadow: none;
   box-sizing: border-box; }
 /* Removes awkward default styles on some inputs for iOS */
@@ -266,13 +283,11 @@ input[type="url"]:focus,
 input[type="password"]:focus,
 textarea:focus,
 select:focus {
-  border: 1px solid #33C3F0;
   outline: 0; }
 label,
 legend {
   display: block;
-  margin-bottom: .5rem;
-  font-weight: 600; }
+  margin-bottom: .5rem; }
 fieldset {
   padding: 0;
   border-width: 0; }
@@ -312,8 +327,7 @@ code {
   font-size: 90%;
   white-space: nowrap;
   background: #F1F1F1;
-  border: 1px solid #E1E1E1;
-  border-radius: 4px; }
+  border: 1px solid #E1E1E1; }
 pre > code {
   display: block;
   padding: 1rem 1.5rem;

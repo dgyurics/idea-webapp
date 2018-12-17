@@ -1,0 +1,53 @@
+.auth__container {
+  height: 100%;
+  width: 100%;
+}
+.auth__info__icon {
+  cursor: pointer;
+  width: 2rem;
+  height: 2rem;
+  margin: 2rem;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+}
+.auth__info__group {
+  margin-top: -3rem;
+}
+.auth__info__button {
+  width: 20rem;
+  margin-bottom: 3rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.auth_group {
+  width: 100%;
+  max-width: 370px;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+  text-align: center;
+}
+.auth_input {
+  width: 90%;
+  display: block;
+  margin: 3rem auto;
+  background: transparent;
+  text-align: center;
+  font-size: 14px;
+}
+.auth_input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+.auth_username {
+  width: 22rem;
+}
+.auth_password {
+  width: 17rem;
+}
+.auth_submit {
+  display: block;
+  margin: 3rem auto;
+}

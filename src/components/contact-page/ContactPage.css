@@ -1,0 +1,53 @@
+.contact-page {
+  height: 100%;
+  width: 100%;
+}
+.contact-page__container {
+  height: 100%;
+  width: 100%;
+  background-size: cover;
+  background-image: url("./image/background.png");
+}
+.contact-page__main {
+  height: 100%;
+  background-color: white;
+  padding: 3rem;
+}
+.contact-page__success {
+  font-weight: 600;
+}
+.contact-page__error {
+  color: #ff4e4e;
+  font-weight: 600;
+  display: block;
+}
+.contact-page__form {
+  font-size: 1.2rem;
+}
+.contact-page__form-element,
+.contact-page__error {
+  margin-bottom: 1rem;
+}
+.contact-page__info,
+.contact-page__message {
+  width: 100%;
+}
+.contact-page__message {
+  height: 10rem;
+  resize: none;
+}
+.contact-page__submit {
+  margin: 0 auto;
+  display: block;
+}
+
+@media (min-width: 1200px) {
+  .contact-page__main {
+    width: 40%;
+    padding: 3rem;
+  }
+  .contact-page__form-element,
+  .contact-page__error {
+    margin-bottom: 2rem;
+  }
+}

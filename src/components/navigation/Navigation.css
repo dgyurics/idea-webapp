@@ -1,28 +1,87 @@
-:local(.navigation) {
-  min-height: 32px;
-  background-color: #000;
-  color: #fff;
-  font-family: 'Poiret One';
-  font-weight: 700;
-  font-family: 'Montserrat Alternates', sans-serif;
-  padding: 0 1.5rem 0;
+.navigation {
+  transition: margin 700ms;
+  display: block;
+  width: 100%;
+  height: 10rem;
+  margin-bottom: -5rem;
 }
-
-:local(.directory) {
-  letter-spacing: 1.5px;
+.navigation--hidden {
+  margin-top: -5rem;
 }
-
-:local(.navigation__left),
-:local(.navigation__right) {
+.navigation__menu,
+.navigation__toggle {
+  height: 5rem;
+  line-height: 5rem;
+  padding: 0 1rem;
+  text-align: right;
+}
+.navigation__toggle {
+  color: #eee;
+}
+.navigation__menu {
+  white-space: nowrap;
+  background-color: #fff;
+  border-bottom: 1px solid #27272712;
+}
+.navigation__menu__item,
+.navigation__menu__items {
   display: inline;
-  line-height: 3.5rem;
+  margin: 0;
 }
-:local(.navigation__left) {
-}
-:local(.navigation__right) {
-  float: right;
-}
-:local(.navigation__icon) {
-  vertical-align: middle;
+.navigation__menu__item {
+  margin: 0 1.5rem;
+  color: #4e4c4c;
+  letter-spacing: .2rem;
   cursor: pointer;
+}
+.navigation__menu__link:hover {
+  color: #4e4c4c;
+}
+.navigation__menu__items {
+  padding: 0;
+  text-transform: uppercase;
+  font-size: 1.2rem;
+}
+.navigation__menu-icon,
+.navigation__close-icon {
+  display: inline;
+}
+.navigation__menu-icon {
+  color: #eee;
+}
+.navigation__menu-icon--black {
+  color: #4e4c4c;
+}
+.navigation__close-icon {
+  color: #4e4c4c;
+}
+.navigation__icon__container {
+  cursor: pointer;
+  display: inline-block;
+  margin: 0 1rem;
+  width: 2.5rem;
+  height: 100%;
+}
+
+/* screens larger than mobile phone */
+@media (min-width: 1200px) {
+  .navigation {
+    height: 12rem;
+    margin-bottom: -6rem;
+  }
+  .navigation--hidden {
+    margin-top: -6rem;
+  }
+  .navigation__menu,
+  .navigation__toggle {
+    height: 6rem;
+    line-height: 6rem;
+    padding: 0 2rem;
+  }
+  .navigation__menu__items {
+    font-size: 1.3rem;
+  }
+  .navigation__icon__container {
+    width: 3rem;
+  }
 }

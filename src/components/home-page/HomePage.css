@@ -3,17 +3,21 @@
   vmax: 1/100th of the largest side
   @media screen and (min-width: 1024px): screens larger than mobile phone
 */
+.home-page {
+  height: 100%;
+  width: 100%;
+}
 .home-container {
-  margin: 0;
-  padding: 0;
-  display: block;
   height: 100%;
   width: 100%;
   overflow: hidden;
   background-color: #000;
   color: #eee;
 }
-
+.home-container__logo {
+  width: 100%;
+  height: calc(100% - 4vmax); /* leave room at bottom for footer */
+}
 .home__header__icon__container {
   position: absolute;
   right: 0;
@@ -29,14 +33,10 @@
   opacity: 0.5;
 }
 
-.coming-soon {
-  white-space: nowrap;
-}
-
 .home-logo {
   font-family: 'Poiret One', cursive;
   position: relative;
-  font-size: 1.5vmax;
+  font-size: 2.5vmax;
   float: left;
   top: 50%;
   left: 50%;
@@ -44,30 +44,27 @@
 }
 
 .home-logo--lrg {
-  font-size: 17vmax;
+  font-size: 22vmax;
   font-weight: 500;
 }
 
 .home-footer {
-  color: rgba(255, 255, 255, 0.73);
   font-family: 'Poiret One', cursive;
-  bottom: 0;
-  position: absolute;
-  font-size: 1.5vmax;
-  width: 100%;
+  color: rgba(255, 255, 255, 0.73);
+  font-size: 2vmax;
+  line-height: 4vmax;
   text-align: center;
-  padding-bottom: 7px;
-  margin: 0;
-  display: block;
 }
 
 /* screens larger than mobile phone */
-@media screen and (min-width: 1024px) {
-  .home__header__icon__container {
-    height: 1.5vmax;
-    width: 1.5vmax;
+@media (min-width: 1200px) {
+  .home-logo {
+    font-size: 1.5vmax;
+  }
+  .home-logo--lrg {
+    font-size: 17vmax;
   }
   .home-footer {
-    font-size: 1.0vmax;
+    font-size: 1vmax;
   }
 }
