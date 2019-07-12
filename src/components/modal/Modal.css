@@ -32,6 +32,16 @@
   text-transform: uppercase;
   white-space: nowrap;
 }
+
+/* Landscape mode */
+@media (max-height: 450px) {
+  .modal {
+    top: 50%;
+  }
+  .modal__content {
+    padding: 3rem;
+  }
+}
 /* Larger than desktop */
 @media (min-width: 1000px) {
   .modal {
