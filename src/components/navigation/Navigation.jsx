@@ -57,7 +57,7 @@ class Navigation extends Component {
 }
 
 Navigation.defaultProps = {
-  whiteBackground: false,
+  whiteBackground: true,
 };
 
 Navigation.propTypes = {
