@@ -4,6 +4,8 @@
   width: 100%;
   height: 10rem;
   margin-bottom: -5rem;
+  position: relative;
+  z-index: 1;
 }
 .navigation--hidden {
   margin-top: -5rem;

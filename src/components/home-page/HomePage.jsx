@@ -8,7 +8,7 @@ if (process.env.NODE_ENV !== 'production') {
 
 const Home = () => (
   <div className="home-page">
-    <NavBar />
+    <NavBar whiteBackground={false} />
     <div className="home-container">
       <div className="home-container__logo">
         <h1 className="home-logo no-touch">
