@@ -3,6 +3,12 @@ const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
 
+const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
+const API_URL = {
+    production: JSON.stringify('https://lagom.life/api'),
+    development: JSON.stringify('http://localhost:8080')
+}
+
 module.exports = {
   entry: './src/index.jsx',
   output: {
@@ -53,7 +59,10 @@ module.exports = {
     new HtmlWebPackPlugin({
       template: './src/index.html',
       filename: './index.html'
-    })
+    }),
+    new webpack.DefinePlugin({
+        'API_URL': API_URL[environment]
+    }),
   ],
   devServer: {
     contentBase: './dist',

@@ -5,7 +5,7 @@ ENV PATH /app/node_modules/.bin:$PATH
 COPY package.json .
 RUN npm install --silent
 COPY . .
-RUN npm run build
+RUN npm run build --prod
 
 FROM nginx:1.17.0
 COPY --from=build /app/dist /usr/share/nginx/html

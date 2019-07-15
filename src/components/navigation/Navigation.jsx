@@ -46,8 +46,8 @@ class Navigation extends Component {
             <Icon size="100%" style={{ display: 'inline' }} icon={menu} onClick={this.onClick} className={menuClass} />
           </div>
         </div>
-        <Modal toggle={modalOpen} onClose={this.toggleModal}>
-          <div className="no-touch">
+        <Modal visible={modalOpen} onClose={this.toggleModal}>
+          <div className="no-touch navigation__coming_soon">
             <span>coming soon</span>
           </div>
         </Modal>
@@ -56,12 +56,12 @@ class Navigation extends Component {
   }
 }
 
-Navigation.defaultProps = {
-  whiteBackground: true,
-};
-
 Navigation.propTypes = {
   whiteBackground: PropTypes.bool,
+};
+
+Navigation.defaultProps = {
+  whiteBackground: true,
 };
 
 export default Navigation;

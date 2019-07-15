@@ -64,6 +64,11 @@
   width: 2.5rem;
   height: 100%;
 }
+.navigation__coming_soon {
+  font-size: 1.5rem;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}
 
 /* screens larger than mobile phone */
 @media (min-width: 1200px) {

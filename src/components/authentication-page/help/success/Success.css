@@ -1,0 +1,9 @@
+.auth__success__icon {
+  width: 2.5rem;
+  margin: 1.5rem auto;
+}
+.auth__success {
+  display: inline-block;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+}

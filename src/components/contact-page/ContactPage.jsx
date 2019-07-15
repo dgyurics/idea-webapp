@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
-import axios from 'axios';
 import Recaptcha from 'react-recaptcha';
 import NavBar from '../navigation/Navigation';
+import { contactUs } from '../../util/httpClient';
 import './ContactPage.css';
 
 let recaptchaInstance;
@@ -59,21 +59,20 @@ class ContactPage extends Component {
   }
 
   // called after captcha has been verified
-  verifyCallBack = (captchaValue) => {
+  verifyCallBack = (reCaptchaResponse) => {
     let { contactInfo, message } = this.state;
     contactInfo = contactInfo.trim();
     message = message.trim();
 
-    axios.post('https://lagom.life/api/contact', {
-      contactInfo, message, captchaValue,
-    }).then(() => {
+    contactUs({ contactInfo, message, reCaptchaResponse }).then(() => {
       this.setState({
         contactInfo: '',
         message: '',
         error: '',
         sent: true,
       });
-    }).catch(() => {
+    }).catch((error) => {
+      console.dir(error);
       this.setState({ error: 'Something went wrong, please try again later' });
     });
   }
@@ -99,7 +98,7 @@ class ContactPage extends Component {
         <div className="contact-page__form-element">
           <label htmlFor="contact-info">
             contact information
-            <input type="text" className="contact-page__info" name="contact-info" value={contactInfo} onChange={this.handleChange('contactInfo')} />
+            <input type="text" className="contact-page__info" name="contact-info" value={contactInfo} onChange={this.handleChange('contactInfo')} autoCorrect="off" autoCapitalize="none" />
           </label>
         </div>
         <div className="contact-page__form-element">

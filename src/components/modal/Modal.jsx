@@ -4,16 +4,16 @@ import PropTypes from 'prop-types';
 import './Modal.css';
 
 class Modal extends Component {
-  handleClose = (event) => {
+  handleClose = (e) => {
     const { onClose } = this.props;
-    if (event.target === event.currentTarget && onClose) {
+    if (e.target === e.currentTarget && onClose) {
       onClose();
     }
   }
 
   render() {
-    const { children, toggle } = this.props;
-    const modalVisible = toggle ? 'modal__container modal__container--visible'
+    const { children, visible } = this.props;
+    const modalVisible = visible ? 'modal__container modal__container--visible'
       : 'modal__container';
     return ReactDOM.createPortal(
       <div onClick={this.handleClose} onKeyDown={this.handleClose} className={modalVisible}>
@@ -29,7 +29,7 @@ class Modal extends Component {
 }
 
 Modal.propTypes = {
-  toggle: PropTypes.bool.isRequired,
+  visible: PropTypes.bool.isRequired,
   children: PropTypes.node.isRequired,
   onClose: PropTypes.func.isRequired,
 };

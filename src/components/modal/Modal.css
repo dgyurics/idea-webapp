@@ -27,10 +27,6 @@
 }
 .modal__content {
   padding: 5rem;
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
-  white-space: nowrap;
 }
 
 /* Landscape mode */

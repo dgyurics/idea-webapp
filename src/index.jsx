@@ -6,19 +6,23 @@ import './style/index.css';
 import './style/normalize.css';
 import './style/skeleton.css';
 
+import { UserProvider } from './components/context/Context';
 import HomePage from './components/home-page/HomePage';
-import AuthPage from './components/authentication/Authentication';
+import AuthPage from './components/authentication-page/AuthenticationPage';
 import ContactPage from './components/contact-page/ContactPage';
 
 import './style/favicon.ico';
 
 ReactDOM.render(
-  <Router>
-    <Switch>
-      <Route exact path="/" component={HomePage} />
-      <Route path="/authentication" component={AuthPage} />
-      <Route path="/contact" component={ContactPage} />
-    </Switch>
-  </Router>,
+  <UserProvider>
+    <Router>
+      <Switch>
+        <Route exact path="/" component={HomePage} />
+        <Route path="/authentication/:userId([0-9]*)" component={AuthPage} />
+        <Route path="/authentication" component={AuthPage} />
+        <Route path="/contact" component={ContactPage} />
+      </Switch>
+    </Router>
+  </UserProvider>,
   document.getElementById('react-div'),
 );

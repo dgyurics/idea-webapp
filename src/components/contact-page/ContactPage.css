@@ -40,7 +40,9 @@
   margin: 0 auto;
   display: block;
 }
-
+#g-recaptcha {
+  display: none;
+}
 @media (min-width: 1200px) {
   .contact-page__main {
     width: 40%;

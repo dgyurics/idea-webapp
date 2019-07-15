@@ -17,6 +17,7 @@ html, body, #react-div {
   margin: 0;
   padding: 0;
 }
+
 h1, h2, h3 {
   font-size: 2rem;
   margin: 0.5rem;
@@ -37,7 +38,10 @@ label {
   line-height: 30px;
   letter-spacing: .12rem;
 }
-textarea, select, input, button { outline: none; }
+
+textarea, select, input, button {
+  outline: none;
+}
 
 .svg-icon {
     height: 1em;
@@ -45,6 +49,19 @@ textarea, select, input, button { outline: none; }
     pointer-events: none;
     vertical-align: middle;
     width: 1em;
+}
+
+.hidden {
+  display: none;
+}
+
+textarea,
+input[type="text"],
+input[type="password"],
+input[type="button"],
+input[type="submit"] {
+  -webkit-appearance: none;
+  border-radius: 0;
 }
 
 .no-touch {
