@@ -2,6 +2,7 @@ const webpack = require('webpack');
 const path = require('path');
 const HtmlWebPackPlugin = require('html-webpack-plugin');
 const CleanWebpackPlugin = require('clean-webpack-plugin');
+const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const API_URL = {
@@ -63,6 +64,9 @@ module.exports = {
     new webpack.DefinePlugin({
         'API_URL': API_URL[environment]
     }),
+    new CopyWebpackPlugin([
+        {from:'src/images', to:'images'}
+    ]),
   ],
   devServer: {
     contentBase: './dist',

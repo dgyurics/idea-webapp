@@ -40,3 +40,8 @@ export const resetPassword = (userId, data) => axios({
   url: `${API_URL}/forgot-password/${userId}`,
   data,
 });
+
+export const getBooks = () => axios({
+  method: 'get',
+  url: `${API_URL}/book`,
+});
