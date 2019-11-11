@@ -28,11 +28,13 @@ class Navigation extends Component {
     return (
       <div className={navigationClass}>
         <div className="navigation__menu">
-          <ol className="navigation__menu__items">
+          <ol className="navigation__menu__items no-touch">
             <li className="navigation__menu__item">
               <Link to="/" className="navigation__menu__link">home</Link>
             </li>
-            <li onClick={this.toggleModal} onKeyDown={this.toggleModal} className="navigation__menu__item">resources</li>
+            <li className="navigation__menu__item">
+              <Link to="/resource" className="navigation__menu__link">resources</Link>
+            </li>
             <li className="navigation__menu__item">
               <Link to="/contact" className="navigation__menu__link">contact</Link>
             </li>

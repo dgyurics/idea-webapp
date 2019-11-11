@@ -15,7 +15,7 @@
 }
 .home-container__logo {
   width: 100%;
-  height: calc(100% - 4vmax); /* leave room at bottom for footer */
+  height: calc(100% - 4rem); /* leave room at bottom for footer */
 }
 .home__header__icon__container {
   position: absolute;
@@ -50,8 +50,9 @@
 .home-footer {
   font-family: 'Poiret One', cursive;
   color: rgba(255, 255, 255, 0.73);
-  font-size: 2vmax;
-  line-height: 4vmax;
+  letter-spacing: 1rem;
+  font-size: 1.2rem;
+  line-height: 4rem;
   text-align: center;
 }
 
