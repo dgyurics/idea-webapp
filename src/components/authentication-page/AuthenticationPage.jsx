@@ -2,7 +2,7 @@ import React, { useContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
 import { info } from 'react-icons-kit/feather/info';
-import { UserContext } from '../context/Context';
+import { UserContext } from '../context/UserContext';
 import NavBar from '../navigation/Navigation';
 import Login from './login/Login';
 import Help from './help/Help';

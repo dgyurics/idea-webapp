@@ -5,21 +5,6 @@
   height: 100%;
   width: 100%;
 }
-.auth__login {
-  width: 100%;
-  max-width: 370px;
-  position: absolute;
-  top: 50%;
-  left: 50%;
-  transform: translate(-50%,-50%);
-  text-align: center;
-}
-.auth__login__error {
-  color: #ff4e4e;
-  font-weight: 600;
-  display: block;
-  margin: 2rem 0;
-}
 .auth__icon__container {
   cursor: pointer;
   width: 2.5rem;
@@ -27,38 +12,11 @@
   right: 2rem;
   position: absolute;
 }
-.auth__button {
-  width: 20rem;
-  display: block;
-  margin-left: auto;
-  margin-right: auto;
-}
-.auth__form {
-  margin: 0 -2rem;
-}
-.auth__button--top {
-  margin-bottom: 3rem;
-}
-.auth_input {
-  width: 90%;
-  display: block;
-  margin: 3rem auto;
-  background: transparent;
-  text-align: center;
-  font-size: 14px;
-}
-.auth_input:-webkit-autofill {
-  -webkit-box-shadow: 0 0 0 30px white inset;
-}
 .auth_username {
   width: 22rem;
 }
 .auth_password {
   width: 17rem;
-}
-.auth_submit {
-  display: block;
-  margin: 3rem auto;
 }
 /* screens larger than mobile phone */
 @media (min-width: 1200px) {

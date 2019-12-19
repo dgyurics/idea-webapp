@@ -6,9 +6,10 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 
 const environment = process.env.NODE_ENV === 'production' ? 'production' : 'development';
 const API_URL = {
-    production: JSON.stringify('https://lagom.life/api'),
-    development: JSON.stringify('http://localhost:8080')
+  production: JSON.stringify('https://lagom.life/api'),
+  development: JSON.stringify('http://localhost:8080')
 }
+const PRODUCTION = process.env.NODE_ENV === 'production';
 
 module.exports = {
   entry: './src/index.jsx',
@@ -62,7 +63,8 @@ module.exports = {
       filename: './index.html'
     }),
     new webpack.DefinePlugin({
-        'API_URL': API_URL[environment]
+        'API_URL': API_URL[environment],
+        'PRODUCTION': PRODUCTION
     }),
     new CopyWebpackPlugin([
         {from:'src/images', to:'images'}

@@ -1,6 +1,6 @@
 import React, { createContext, useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
-import { loadUser } from '../../util/authUtil';
+import { loadUser, getAuthorities } from '../../util/authUtil';
 
 export const UserContext = createContext({});
 
@@ -11,9 +11,12 @@ export const UserProvider = (props) => {
   } = props;
 
   const [isLoggedIn, setIsLoggedIn] = useState(initialIsLoggedIn);
+  const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
     setIsLoggedIn(loadUser().loggedIn);
+    if (isLoggedIn) getAuthorities().then(res => setIsAdmin(res.data === 'ADMIN'));
+    else setIsAdmin(false);
   });
 
   const login = () => {
@@ -22,6 +25,8 @@ export const UserProvider = (props) => {
   const userContext = {
     isLoggedIn,
     setIsLoggedIn,
+    isAdmin,
+    setIsAdmin,
     login,
   };
 

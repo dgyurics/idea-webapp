@@ -38,10 +38,10 @@ const ForgotPassword = (props) => {
   };
   return (
     <div className={visible ? '' : 'hidden'}>
-      <span className="auth__login__error">{values.error}</span>
-      <form onSubmit={handleSubmit} className="auth__form">
-        <input type="text" name="username" placeholder="email" value={values.username} onChange={handleChange} className="auth_input" autoCapitalize="none" />
-        <input type="submit" name="submit" value="Submit" className="auth_submit" />
+      <span className="modal__error">{values.error}</span>
+      <form onSubmit={handleSubmit} className="modal__form">
+        <input type="text" name="username" placeholder="email" value={values.username} onChange={handleChange} className="modal__input" autoCapitalize="none" />
+        <input type="submit" name="submit" value="Submit" className="modal__submit" />
       </form>
     </div>
   );

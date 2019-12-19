@@ -1,6 +1,7 @@
 import React, { useContext, useState } from 'react';
-import { UserContext } from '../../context/Context';
+import { UserContext } from '../../context/UserContext';
 import { login, logout } from '../../../util/authUtil';
+import './Login.css';
 
 const Login = () => {
   const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
@@ -41,7 +42,7 @@ const Login = () => {
 
   const handleLogout = () => logout()
     .then(() => setIsLoggedIn(false))
-    .catch(error => console.log(error));
+    .catch(() => setIsLoggedIn(false));
 
   const handleChange = (e) => {
     const { name, value } = e.target;
@@ -54,11 +55,11 @@ const Login = () => {
         Logout
       </button>
       <div className={isLoggedIn ? 'hidden' : ''}>
-        <span className="auth__login__error">{values.error}</span>
+        <span className="modal__error">{values.error}</span>
         <form onSubmit={handleLogin}>
-          <input type="text" name="username" value={values.username} onChange={handleChange} className="auth_input" autoCorrect="off" autoCapitalize="none" />
-          <input type="password" name="password" value={values.password} onChange={handleChange} className="auth_input" />
-          <input type="submit" name="login" value="Submit" disabled={!values.username.trim() || !values.password.trim()} className="auth_submit" />
+          <input type="text" name="username" value={values.username} onChange={handleChange} className="modal__input" autoCorrect="off" autoCapitalize="none" />
+          <input type="password" name="password" value={values.password} onChange={handleChange} className="modal__input" />
+          <input type="submit" name="login" value="Submit" disabled={!values.username.trim() || !values.password.trim()} className="modal__submit" />
         </form>
       </div>
     </div>

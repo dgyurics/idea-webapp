@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import Modal from '../../modal/Modal';
-import SuccessForm from './success/Success';
+import SuccessForm from '../../modal/template/Success';
 import RegistrationForm from './register/Register';
 import ResetCodeForm from './reset-code/ResetCode';
 import ResetPasswordForm from './reset-password/ResetPassword';
@@ -49,12 +49,17 @@ const Help = (props) => {
   };
   const successResetCodeCallback = (code, message = 'success') => {
     setVisibility({ ...initState, options: false, success: { visible: true, message } });
-    setTimeout(() => setVisibility({ ...initState, options: false, resetPassword: true, resetCode: { visible: false, code } }), MODAL_CLOSE_TIMER);
+    setTimeout(() => setVisibility({
+      ...initState,
+      options: false,
+      resetPassword: true,
+      resetCode: { visible: false, code },
+    }), MODAL_CLOSE_TIMER);
   };
   const renderOptions = () => (
     <div className={visibility.options ? '' : 'hidden'}>
-      <button type="button" onClick={register} className="auth__button auth__button--top">Register</button>
-      <button type="button" onClick={updatePassword} className="auth__button">Forgot Password</button>
+      <button type="button" onClick={register} className="modal__button modal__button--top">Register</button>
+      <button type="button" onClick={updatePassword} className="modal__button">Forgot Password</button>
     </div>
   );
   return (
@@ -62,6 +67,7 @@ const Help = (props) => {
       { renderOptions() }
       <RegistrationForm visible={visibility.registration} successCb={successCallback} />
       <ForgotPasswordForm visible={visibility.forgotPassword} successCb={successCallback} />
+      { /* eslint-disable max-len */ }
       <ResetCodeForm visible={visibility.resetCode.visible} userId={userId} successCb={successResetCodeCallback} />
       <ResetPasswordForm visible={visibility.resetPassword} userId={userId} resetCode={visibility.resetCode.code} successCb={successCallback} />
       <SuccessForm visible={visibility.success.visible} message={visibility.success.message} />

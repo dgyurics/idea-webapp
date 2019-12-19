@@ -6,7 +6,7 @@ import './Modal.css';
 class Modal extends Component {
   handleClose = (e) => {
     const { onClose } = this.props;
-    if (e.target === e.currentTarget && onClose) {
+    if (e.target === e.currentTarget) {
       onClose();
     }
   }

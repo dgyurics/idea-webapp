@@ -71,8 +71,7 @@ class ContactPage extends Component {
         error: '',
         sent: true,
       });
-    }).catch((error) => {
-      console.dir(error);
+    }).catch(() => {
       this.setState({ error: 'Something went wrong, please try again later' });
     });
   }
@@ -124,7 +123,13 @@ class ContactPage extends Component {
   )
 
   render() {
-    const { contactInfo, message, error, sent, mobileView } = this.state;
+    const {
+      contactInfo,
+      message,
+      error,
+      sent,
+      mobileView,
+    } = this.state;
     return (
       <div className="contact-page">
         <NavBar whiteBackground={mobileView} />

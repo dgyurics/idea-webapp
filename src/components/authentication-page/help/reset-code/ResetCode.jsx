@@ -31,19 +31,19 @@ const ResetCode = (props) => {
   };
   return (
     <div className={visible ? '' : 'hidden'}>
-      <span className="auth__login__error">{values.error}</span>
-      <form onSubmit={handleSubmit} className="auth__form">
+      <span className="modal__error">{values.error}</span>
+      <form onSubmit={handleSubmit} className="modal__form">
         <input
           type="number"
           name="resetCode"
           placeholder="code"
           value={values.code}
           onChange={handleChange}
-          className="auth_input"
+          className="modal__input"
           autoCorrect="off"
           autoCapitalize="none"
         />
-        <input type="submit" name="submit" value="Submit" className="auth_submit" />
+        <input type="submit" name="submit" value="Submit" className="modal__submit" />
       </form>
     </div>
   );

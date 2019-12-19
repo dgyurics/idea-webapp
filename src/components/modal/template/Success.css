@@ -1,8 +1,8 @@
-.auth__success__icon {
+.modal__success__icon {
   width: 2.5rem;
   margin: 1.5rem auto;
 }
-.auth__success {
+.modal__success {
   display: inline-block;
   letter-spacing: 1px;
   text-transform: uppercase;

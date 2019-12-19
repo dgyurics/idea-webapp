@@ -6,7 +6,7 @@ import './style/index.css';
 import './style/normalize.css';
 import './style/skeleton.css';
 
-import { UserProvider } from './components/context/Context';
+import { UserProvider } from './components/context/UserContext';
 import HomePage from './components/home-page/HomePage';
 import AuthPage from './components/authentication-page/AuthenticationPage';
 import ResourcePage from './components/resource-page/Resource';

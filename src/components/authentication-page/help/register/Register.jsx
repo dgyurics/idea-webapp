@@ -30,7 +30,8 @@ const Register = (props) => {
     }
     register({
       username: values.username.trim(),
-      password: values.password })
+      password: values.password,
+    })
       .then(() => {
         setValues(defaultRegValues);
         successCb('success');
@@ -49,11 +50,11 @@ const Register = (props) => {
 
   return (
     <div className={visible ? '' : 'hidden'}>
-      <span className="auth__login__error">{values.error}</span>
-      <form onSubmit={handleSubmit} className="auth__form">
-        <input type="text" name="username" placeholder="email" value={values.username} onChange={handleChange} className="auth_input" autoCorrect="off" autoCapitalize="none" />
-        <input type="password" name="password" placeholder="password" value={values.password} onChange={handleChange} className="auth_input" />
-        <input type="submit" name="register" value="Register" className="auth_submit" />
+      <span className="modal__error">{values.error}</span>
+      <form onSubmit={handleSubmit} className="modal__form">
+        <input type="text" name="username" placeholder="email" value={values.username} onChange={handleChange} className="modal__input" autoCorrect="off" autoCapitalize="none" />
+        <input type="password" name="password" placeholder="password" value={values.password} onChange={handleChange} className="modal__input" />
+        <input type="submit" name="register" value="Register" className="modal__submit" />
       </form>
     </div>
   );

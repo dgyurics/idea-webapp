@@ -63,6 +63,7 @@ textarea, select, input, button {
   display: none;
 }
 
+select,
 textarea,
 input[type="text"],
 input[type="password"],

@@ -28,6 +28,42 @@
 .modal__content {
   padding: 5rem;
 }
+.modal__error {
+  color: #ff4e4e;
+  font-weight: 600;
+  display: block;
+  margin: 2rem 0;
+}
+.modal__form {
+  margin: 0 -2rem;
+}
+.modal__submit {
+  display: block;
+  margin: 3rem auto;
+}
+.modal__input:-webkit-autofill {
+  -webkit-box-shadow: 0 0 0 30px white inset;
+}
+.modal__input {
+  width: 90%;
+  display: block;
+  margin: 3rem auto;
+  background: transparent;
+  text-align: center;
+  font-size: 14px;
+}
+.modal__input--select {
+  text-align-last: center;
+}
+.modal__button {
+  width: 20rem;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+.modal__button--top {
+  margin-bottom: 3rem;
+}
 
 /* Landscape mode */
 @media (max-height: 450px) {

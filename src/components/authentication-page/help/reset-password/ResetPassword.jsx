@@ -6,7 +6,12 @@ import { resetPassword } from '../../../../util/authUtil';
  * Dialog prompting user to enter a new password
 */
 const ResetPassword = (props) => {
-  const { visible, userId, resetCode, successCb } = props;
+  const {
+    visible,
+    userId,
+    resetCode,
+    successCb,
+  } = props;
   const initState = { newPassword: '', error: '' };
   const [values, setValues] = useState(initState);
   const handleChange = (e) => {

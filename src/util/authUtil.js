@@ -1,4 +1,12 @@
-import { login, logout, register, forgotPassword, resetPassword, isValidResetCode } from './httpClient';
+import {
+  login,
+  logout,
+  register,
+  forgotPassword,
+  resetPassword,
+  isValidResetCode,
+  getAuthorities,
+} from './httpClient';
 
 const setItem = (key, value) => localStorage.setItem(key, JSON.stringify(value));
 const getItem = key => JSON.parse(localStorage.getItem(key));
@@ -18,4 +26,12 @@ const logoutUser = () => logout()
     setItem('logged-in', { loggedIn: false });
   });
 
-export { loadUser, loginUser as login, logoutUser as logout, register, forgotPassword, resetPassword, isValidResetCode };
+export {
+  loadUser,
+  loginUser as login,
+  logoutUser as logout,
+  register, forgotPassword,
+  resetPassword,
+  isValidResetCode,
+  getAuthorities,
+};
