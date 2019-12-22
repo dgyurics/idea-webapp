@@ -9,7 +9,7 @@ import './style/skeleton.css';
 import { UserProvider } from './components/context/UserContext';
 import HomePage from './components/home-page/HomePage';
 import AuthPage from './components/authentication-page/AuthenticationPage';
-import ResourcePage from './components/resource-page/Resource';
+import ResourcePage from './components/resource-page/ResourcePage';
 import ContactPage from './components/contact-page/ContactPage';
 import NotFoundPage from './components/not-found-page/NotFoundPage';
 

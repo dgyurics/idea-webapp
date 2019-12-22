@@ -2,9 +2,9 @@ import React from 'react';
 import NavBar from '../navigation/Navigation';
 import { BookProvider } from '../context/BookContext';
 import Books from './books/Books';
-import './Resource.css';
+import './ResourcePage.css';
 
-const Resource = () => (
+const ResourcePage = () => (
   <div className="resource-page">
     <NavBar />
     <div className="resource-page__container">
@@ -20,4 +20,4 @@ const Resource = () => (
   </div>
 );
 
-export default Resource;
+export default ResourcePage;

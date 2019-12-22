@@ -7,7 +7,7 @@ if (!PRODUCTION) {
   console.log('Looks like we are in development mode!');
 }
 
-const Home = () => (
+const HomePage = () => (
   <div className="home-page">
     <NavBar whiteBackground={false} />
     <div className="home-container">
@@ -25,4 +25,4 @@ const Home = () => (
   </div>
 );
 
-export default Home;
+export default HomePage;

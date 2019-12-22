@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from '../navigation/Navigation';
 import './NotFoundPage.css';
 
-const NotFound = () => (
+const NotFoundPage = () => (
   <div className="not-found-page">
     <NavBar />
     <div className="not-found-container">
@@ -19,4 +19,4 @@ const NotFound = () => (
   </div>
 );
 
-export default NotFound;
+export default NotFoundPage;

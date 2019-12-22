@@ -1,7 +1,7 @@
 import React, { useState, useContext } from 'react';
 import PropTypes from 'prop-types';
-import RemoveBookForm from './RemoveBookForm/RemoveBookForm';
-import AddBookForm from './AddBookForm/AddBookForm';
+import RemoveBookForm from './remove-book/RemoveBook';
+import AddBookForm from './add-book/AddBook';
 import { BookContext } from '../../../context/BookContext';
 import Modal from '../../../modal/Modal';
 import SuccessForm from '../../../modal/template/Success';

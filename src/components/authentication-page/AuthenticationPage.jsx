@@ -8,7 +8,7 @@ import Login from './login/Login';
 import Help from './help/Help';
 import './AuthenticationPage.css';
 
-const Authentication = (props) => {
+const AuthenticationPage = (props) => {
   const { isLoggedIn } = useContext(UserContext);
   const [showModal, setShowModal] = useState(false);
   const { match: { params: { userId } } } = props;
@@ -33,7 +33,7 @@ const Authentication = (props) => {
   );
 };
 
-Authentication.propTypes = {
+AuthenticationPage.propTypes = {
   match: PropTypes.shape({
     params: PropTypes.shape({
       userId: PropTypes.string,
@@ -41,10 +41,10 @@ Authentication.propTypes = {
   }),
 };
 
-Authentication.defaultProps = {
+AuthenticationPage.defaultProps = {
   match: {
     params: null,
   },
 };
 
-export default Authentication;
+export default AuthenticationPage;
