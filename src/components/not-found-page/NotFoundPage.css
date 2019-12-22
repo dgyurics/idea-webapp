@@ -1,0 +1,42 @@
+.not-found-page {
+  height: 100%;
+  width: 100%;
+}
+.not-found-container {
+  overflow: hidden;
+  height: calc(100% - 4rem); /* leave room at bottom for footer */
+}
+.not-found-code {
+  font-size: 5vh;
+  display: block;
+}
+.not-found-text {
+  font-size: 17vh;
+  font-family: 'Poiret One', cursive;
+}
+.not-found-text--center {
+  position: relative;
+  top: 50%;
+  left: 60%;
+  transform: translate(-50%, -50%);
+}
+.not-found-footer {
+  font-family: 'Poiret One', cursive;
+  color: #000;
+  letter-spacing: 1rem;
+  font-size: 1.2rem;
+  line-height: 4rem;
+  text-align: center;
+}
+
+@media (orientation: portrait) {
+  .not-found-text {
+    font-size: 15vh;
+  }
+}
+/* screens larger than mobile phone */
+@media (min-width: 1200px) {
+  .not-found-footer {
+    font-size: 1vmax;
+  }
+}

@@ -11,6 +11,7 @@ import HomePage from './components/home-page/HomePage';
 import AuthPage from './components/authentication-page/AuthenticationPage';
 import ResourcePage from './components/resource-page/Resource';
 import ContactPage from './components/contact-page/ContactPage';
+import NotFoundPage from './components/not-found-page/NotFoundPage';
 
 import './style/favicon.ico';
 
@@ -23,6 +24,7 @@ ReactDOM.render(
         <Route path="/authentication" component={AuthPage} />
         <Route path="/resource" component={ResourcePage} />
         <Route path="/contact" component={ContactPage} />
+        <Route component={NotFoundPage} />
       </Switch>
     </Router>
   </UserProvider>,
