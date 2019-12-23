@@ -14,15 +14,14 @@
 html {
   overflow: hidden;
 }
-
 html, body, #react-div {
   width: 100%;
   height: 100%;
   margin: 0;
   padding: 0;
 }
-
-body, #react-div {
+#react-div {
+  height: 100vh; /* workaround to 100% of portrait mode not working */
   overflow: overlay;
 }
 

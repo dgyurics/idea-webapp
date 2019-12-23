@@ -3,25 +3,19 @@ import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
 import { menu, x } from 'react-icons-kit/feather';
 import { Link } from 'react-router-dom';
-import Modal from '../modal/Modal';
 import './Navigation.css';
 
 class Navigation extends Component {
   state = {
     visible: false,
-    modalOpen: false,
   };
 
   onClick = () => {
     this.setState(prevState => ({ visible: !prevState.visible }));
   }
 
-  toggleModal = () => {
-    this.setState(prevState => ({ modalOpen: !prevState.modalOpen }));
-  }
-
   render = () => {
-    const { visible, modalOpen } = this.state;
+    const { visible } = this.state;
     const { whiteBackground } = this.props;
     const navigationClass = visible ? 'navigation' : 'navigation navigation--hidden';
     const menuClass = whiteBackground ? 'navigation__menu-icon navigation__menu-icon--black' : 'navigation__menu-icon';
@@ -48,11 +42,6 @@ class Navigation extends Component {
             <Icon size="100%" style={{ display: 'inline' }} icon={menu} onClick={this.onClick} className={menuClass} />
           </div>
         </div>
-        <Modal visible={modalOpen} onClose={this.toggleModal}>
-          <div className="no-touch navigation__coming_soon">
-            <span>coming soon</span>
-          </div>
-        </Modal>
       </div>
     );
   }

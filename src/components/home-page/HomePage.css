@@ -1,8 +1,3 @@
-/*
-  Mobile first
-  vmax: 1/100th of the largest side
-  @media screen and (min-width: 1024px): screens larger than mobile phone
-*/
 .home-page {
   height: 100%;
   width: 100%;
