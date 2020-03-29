@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { resetPassword } from '../../../../util/authUtil';
+import { resetPassword } from '../../../../util/httpClient';
 
 /*
  * Dialog prompting user to enter a new password

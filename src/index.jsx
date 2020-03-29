@@ -16,8 +16,8 @@ import NotFoundPage from './components/not-found-page/NotFoundPage';
 import './style/favicon.ico';
 
 ReactDOM.render(
-  <UserProvider>
-    <Router>
+  <Router>
+    <UserProvider>
       <Switch>
         <Route exact path="/" component={HomePage} />
         <Route path="/authentication/:userId([0-9]*)" component={AuthPage} />
@@ -26,7 +26,7 @@ ReactDOM.render(
         <Route path="/contact" component={ContactPage} />
         <Route component={NotFoundPage} />
       </Switch>
-    </Router>
-  </UserProvider>,
+    </UserProvider>
+  </Router>,
   document.getElementById('react-div'),
 );

@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { isValidResetCode } from '../../../../util/authUtil';
+import { isValidResetCode } from '../../../../util/httpClient';
 
 /*
  * Dialog prompting user to enter a password reset code (previously emailed to user)
