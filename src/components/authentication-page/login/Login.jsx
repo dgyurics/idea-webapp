@@ -1,10 +1,11 @@
 import React, { useContext, useState } from 'react';
 import { UserContext } from '../../context/UserContext';
-import { login, logout } from '../../../util/authUtil';
+import { addJwt, removeJwt } from '../../../util/tokenStorage';
+import { login as loginApi, logout as logoutApi } from '../../../util/httpClient';
 import './Login.css';
 
 const Login = () => {
-  const { isLoggedIn, setIsLoggedIn } = useContext(UserContext);
+  const { isLoggedIn } = useContext(UserContext);
   const initState = {
     username: '',
     password: '',
@@ -25,10 +26,10 @@ const Login = () => {
       return;
     }
 
-    login({ username: values.username, password: values.password })
-      .then(() => {
+    loginApi({ username: values.username, password: values.password })
+      .then((res) => {
+        addJwt(res.data);
         setValues(initState);
-        setIsLoggedIn(true);
       })
       .catch((error) => {
         const code = error.response ? error.response.status : 500;
@@ -40,9 +41,9 @@ const Login = () => {
       });
   };
 
-  const handleLogout = () => logout()
-    .then(() => setIsLoggedIn(false))
-    .catch(() => setIsLoggedIn(false));
+  const handleLogout = () => logoutApi()
+    .then(() => removeJwt())
+    .catch(() => removeJwt());
 
   const handleChange = (e) => {
     const { name, value } = e.target;

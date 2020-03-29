@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import PropTypes from 'prop-types';
-import { register } from '../../../../util/authUtil';
+import { addJwt } from '../../../../util/tokenStorage';
+import { register } from '../../../../util/httpClient';
 
 const Register = (props) => {
   const { visible, successCb } = props;
@@ -32,7 +33,8 @@ const Register = (props) => {
       username: values.username.trim(),
       password: values.password,
     })
-      .then(() => {
+      .then((res) => {
+        addJwt(res.data);
         setValues(defaultRegValues);
         successCb('success');
       })

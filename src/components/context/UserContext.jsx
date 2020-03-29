@@ -1,33 +1,77 @@
+/* eslint-disable */
 import React, { createContext, useState, useEffect } from 'react';
+import { useHistory } from "react-router-dom";
 import PropTypes from 'prop-types';
-import { loadUser, getAuthorities } from '../../util/authUtil';
+import {
+  addEventListener,
+  removeEventListener,
+  refreshJwt,
+  getJwt,
+  LOGIN_EVENT,
+  REFRESH_EVENT,
+  LOGOUT_EVENT, removeJwt
+} from '../../util/tokenStorage';
+import jwtDecode from 'jwt-decode';
 
 export const UserContext = createContext({});
 
+/*
+What a decoded jwt looks like
+id: 1
+username: "youremail@gmail.com"
+admin: true
+iat: 1582014430
+exp: 1582015330
+iss: "lagom.life"
+*/
 export const UserProvider = (props) => {
   const {
-    isLoggedIn: initialIsLoggedIn,
     children,
   } = props;
 
-  const [isLoggedIn, setIsLoggedIn] = useState(initialIsLoggedIn);
+  let decodedJwt = null;
+  let history = useHistory();
+  const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isAdmin, setIsAdmin] = useState(false);
 
   useEffect(() => {
-    setIsLoggedIn(loadUser().loggedIn);
-    if (isLoggedIn) getAuthorities().then(res => setIsAdmin(res.data === 'ADMIN'));
-    else setIsAdmin(false);
-  });
+    addEventListener(eventHandler);
+    refreshJwt();
+    return () => removeEventListener(eventHandler);
+  }, []);
 
-  const login = () => {
-  };
+  const eventHandler = event => {
+    switch (event) {
+      case REFRESH_EVENT:
+      case LOGIN_EVENT:
+        updateState(getJwt());
+        break;
+      case LOGOUT_EVENT:
+        logout();
+        break;
+    }
+  }
+
+  const updateState = (token) => {
+    try {
+      decodedJwt = jwtDecode(token);
+      setIsLoggedIn(true);
+      setIsAdmin(decodedJwt.admin);
+    } catch (InvalidTokenError) {
+      console.error(InvalidTokenError);
+      removeJwt();
+    }
+  }
+
+  const logout = () => {
+    setIsLoggedIn(false);
+    setIsAdmin(false);
+    history.push('/authentication');
+  }
 
   const userContext = {
     isLoggedIn,
-    setIsLoggedIn,
     isAdmin,
-    setIsAdmin,
-    login,
   };
 
   return <UserContext.Provider value={userContext}>{children}</UserContext.Provider>;
@@ -36,10 +80,5 @@ export const UserProvider = (props) => {
 export const { Consumer } = UserContext;
 
 UserProvider.propTypes = {
-  isLoggedIn: PropTypes.bool,
   children: PropTypes.node.isRequired,
-};
-
-UserProvider.defaultProps = {
-  isLoggedIn: false,
 };
