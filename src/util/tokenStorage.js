@@ -39,5 +39,11 @@ export const removeEventListener = (func) => {
 export const refreshJwt = () => {
     refreshJwtHttp()
         .then(res => updateJwt(res.data))
-        .catch(() => removeJwt());
+        .catch((error) => {
+            // 401 means we had a refresh cookie but it was invalid;
+            // in which case we would want the user to sign back in again
+            if (error?.response.status === 401) {
+                removeJwt();
+            }
+        });
 };
