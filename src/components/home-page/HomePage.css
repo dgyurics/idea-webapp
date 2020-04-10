@@ -5,6 +5,7 @@
 .home-container {
   height: 100%;
   width: 100%;
+  overflow: hidden;
   background-color: #000;
   color: #eee;
 }
@@ -46,6 +47,7 @@
   font-family: 'Poiret One', cursive;
   color: rgba(255, 255, 255, 0.73);
   letter-spacing: 1rem;
+  margin-right: -1rem;
   font-size: 1.2rem;
   line-height: 4rem;
   text-align: center;

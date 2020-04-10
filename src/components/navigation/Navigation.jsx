@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
-import { menu, x } from 'react-icons-kit/feather';
+import { menu } from 'react-icons-kit/feather';
 import { Link } from 'react-router-dom';
 import './Navigation.css';
 
@@ -30,12 +30,12 @@ class Navigation extends Component {
               <Link to="/resource" className="navigation__menu__link">resources</Link>
             </li>
             <li className="navigation__menu__item">
+              <Link to="/authentication" className="navigation__menu__link">account</Link>
+            </li>
+            <li className="navigation__menu__item">
               <Link to="/contact" className="navigation__menu__link">contact</Link>
             </li>
           </ol>
-          <div className="navigation__icon__container">
-            <Icon size="100%" style={{ display: 'inline' }} icon={x} onClick={this.onClick} className="navigation__close-icon" />
-          </div>
         </div>
         <div className="navigation__toggle">
           <div className="navigation__icon__container">
