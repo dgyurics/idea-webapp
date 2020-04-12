@@ -1,5 +1,5 @@
 .navigation {
-  transition: margin 700ms;
+  transition: margin 1200ms;
   display: block;
   width: 100%;
   margin-bottom: -5rem;
@@ -67,11 +67,16 @@
 /* screens larger than mobile phone */
 @media (min-width: 1200px) {
   .navigation {
+    transition: margin 700ms;
     height: 12rem;
     margin-bottom: -6rem;
   }
   .navigation--hidden {
     margin-top: -6rem;
+  }
+  .navigation__menu {
+    text-align: right;
+    padding: 0 2rem;
   }
   .navigation__menu,
   .navigation__toggle {
@@ -84,9 +89,14 @@
   .navigation__icon__container {
     width: 3rem;
   }
+  .navigation__menu__item {
+    margin: 0 -.2rem 0 2.5rem;
+    border: none;
+  }
   .navigation__menu__item,
   .navigation__menu__items {
     display: inline;
     border: none;
   }
 }
+

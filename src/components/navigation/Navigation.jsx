@@ -23,23 +23,31 @@ class Navigation extends Component {
       <div className={navigationClass}>
         <div className="navigation__menu">
           <ol className="navigation__menu__items no-touch">
-            <li className="navigation__menu__item">
-              <Link to="/" className="navigation__menu__link">home</Link>
-            </li>
-            <li className="navigation__menu__item">
-              <Link to="/resource" className="navigation__menu__link">resources</Link>
-            </li>
-            <li className="navigation__menu__item">
-              <Link to="/authentication" className="navigation__menu__link">account</Link>
-            </li>
-            <li className="navigation__menu__item">
-              <Link to="/contact" className="navigation__menu__link">contact</Link>
-            </li>
+            <Link to="/" className="navigation__menu__link">
+              <li className="navigation__menu__item">
+                home
+              </li>
+            </Link>
+            <Link to="/resource" className="navigation__menu__link">
+              <li className="navigation__menu__item">
+                resources
+              </li>
+            </Link>
+            <Link to="/authentication" className="navigation__menu__link">
+              <li className="navigation__menu__item">
+                account
+              </li>
+            </Link>
+            <Link to="/contact" className="navigation__menu__link">
+              <li className="navigation__menu__item">
+                contact
+              </li>
+            </Link>
           </ol>
         </div>
         <div className="navigation__toggle">
           <div className="navigation__icon__container">
-            <Icon size="100%" style={{ display: 'inline' }} icon={menu} onClick={this.onClick} className={menuClass} />
+            <Icon size="100%" style={{ display: 'inline' }} icon={menu} onMouseDown={this.onClick} className={menuClass} />
           </div>
         </div>
       </div>
