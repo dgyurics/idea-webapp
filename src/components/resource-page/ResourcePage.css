@@ -3,7 +3,7 @@
   height: 100%;
 }
 .resource-page__container {
-  height: 20%;
+  height: calc(100% - 4rem);
   width: 100%;
   background-color: white;
   overflow: hidden;
