@@ -1,5 +1,5 @@
 .navigation {
-  transition: margin 1200ms;
+  transition: all 600ms;
   display: block;
   width: 100%;
   margin-bottom: -5rem;
@@ -65,9 +65,9 @@
 }
 
 /* screens larger than mobile phone */
-@media (min-width: 1200px) {
+@media (orientation: landscape) {
   .navigation {
-    transition: margin 700ms;
+    transition: all 400ms;
     height: 12rem;
     margin-bottom: -6rem;
   }
