@@ -1,6 +1,7 @@
 import React, { useState, useContext } from 'react';
 import { Icon } from 'react-icons-kit';
 import { settings } from 'react-icons-kit/feather/settings';
+import ScrollContainer from 'react-indiana-drag-scroll';
 import { UserContext } from '../../context/UserContext';
 import { BookContext } from '../../context/BookContext';
 import Admin from './admin/Admin';
@@ -20,9 +21,9 @@ const Books = () => {
   return (
     <div className="books-container">
       { isAdmin ? <Icon className="books-icon" onClick={toggleModal} size="2rem" icon={settings} /> : null }
-      <div className="books-container__main">
+      <ScrollContainer className="books-container__main">
         { renderBooks() }
-      </div>
+      </ScrollContainer>
       <Admin visible={showModal} onClose={() => setShowModal(false)} />
     </div>
   );
