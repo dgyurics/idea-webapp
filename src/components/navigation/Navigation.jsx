@@ -23,19 +23,9 @@ class Navigation extends Component {
       <div className={navigationClass}>
         <div className="navigation__menu">
           <ol className="navigation__menu__items no-touch">
-            <Link to="/" className="navigation__menu__link">
-              <li className="navigation__menu__item">
-                home
-              </li>
-            </Link>
             <Link to="/resource" className="navigation__menu__link">
               <li className="navigation__menu__item">
                 resources
-              </li>
-            </Link>
-            <Link to="/authentication" className="navigation__menu__link">
-              <li className="navigation__menu__item">
-                account
               </li>
             </Link>
             <Link to="/contact" className="navigation__menu__link">

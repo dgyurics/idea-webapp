@@ -42,7 +42,7 @@ export const refreshJwt = () => {
         .catch((error) => {
             // 401 means we had a refresh cookie but it was invalid;
             // in which case we would want the user to sign back in again
-            if (error?.response.status === 401) {
+            if (error?.response?.status === 401) {
                 removeJwt();
             }
         });

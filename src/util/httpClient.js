@@ -1,6 +1,4 @@
-/* eslint-disable no-param-reassign */
 import axios from 'axios';
-// eslint-disable-next-line import/no-cycle
 import { removeJwt, updateJwt, getJwt } from './tokenStorage';
 
 const transport = axios.create({
@@ -77,8 +75,8 @@ transport.interceptors.request.use((config) => {
 });
 
 transport.interceptors.response.use(response => response, (error) => {
-  const path = new URL(error.response.config.url).pathname;
-  if (error.response.status === 401 && path !== '/refresh') {
+  const path = error?.response?.config ? new URL(error.response.config.url).pathname : null;
+  if (error?.response?.status === 401 && path !== '/refresh') {
     // try to get new jwt token (refresh token stored as http only cookie)
     // if success, re-attempt the initial http request
     // if fail, redirect user to login page

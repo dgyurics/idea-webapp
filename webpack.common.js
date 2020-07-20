@@ -26,13 +26,19 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
-        exclude: /node_modules/,
-        use: ['babel-loader', 'eslint-loader']
+        use: ['babel-loader'],
       },
       {
         test: /\.(js|jsx)?$/,
         exclude: /node_modules/,
         use: ['babel-loader']
+      },
+      {
+        loader: 'eslint-loader',
+        options: {
+          emitWarning: true,
+          failOnWarning: false,
+        }        
       },
       {
         test: /\.html$/,

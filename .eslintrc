@@ -11,8 +11,10 @@
     /* remove when bug fixed https://github.com/babel/babel-eslint/issues/530 */
     "object-curly-newline": "warn",
     "template-curly-spacing": "off",
+    "comma-dangle": "off",
+    "arrow-parens": "off",
     "indent": "off",
-    "max-len": "warn",
+    "max-len": "warn"
   },
   "globals": {
     "window": true,

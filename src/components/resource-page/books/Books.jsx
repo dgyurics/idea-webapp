@@ -1,17 +1,20 @@
-import React, { useState, useContext } from 'react';
+import React, { useContext, useEffect } from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
+import ScrollContainer from 'react-indiana-drag-scroll';
+import { getBooks , toggleBookModal } from '../../../actions/book';
 import { Icon } from 'react-icons-kit';
 import { settings } from 'react-icons-kit/feather/settings';
-import ScrollContainer from 'react-indiana-drag-scroll';
 import { UserContext } from '../../context/UserContext';
-import { BookContext } from '../../context/BookContext';
 import Admin from './admin/Admin';
 import './Books.css';
 
-const Books = () => {
-  const { books } = useContext(BookContext);
+const Books = ({ books, getBooks, toggleBookModal }) => {
+  useEffect(() => {
+    getBooks();
+  }, []);
+
   const { isAdmin } = useContext(UserContext);
-  const [showModal, setShowModal] = useState(false);
-  const toggleModal = () => setShowModal(!showModal);
   const renderBooks = () => books.map(book => (
     <div className="book-container" key={book.id}>
       <img className="book" src={book.src} alt={book.alt} />
@@ -20,13 +23,31 @@ const Books = () => {
 
   return (
     <div className="books-container">
-      { isAdmin ? <Icon className="books-icon" onClick={toggleModal} size="2rem" icon={settings} /> : null }
+      { isAdmin ? <Icon className="books-icon" onClick={() => toggleBookModal()} size="2rem" icon={settings} /> : null }
       <ScrollContainer className="books-container__main">
         { renderBooks() }
       </ScrollContainer>
-      <Admin visible={showModal} onClose={() => setShowModal(false)} />
+      <Admin />
     </div>
   );
 };
 
-export default Books;
+const mapDispatchToProps = dispatch => ({
+  getBooks: () => dispatch(getBooks()),
+  toggleBookModal: () => dispatch(toggleBookModal())
+});
+
+const mapStateToProps = state => ({
+  books: state.books
+});
+
+Books.propTypes = {
+  books: PropTypes.arrayOf(PropTypes.string).isRequired,
+  getBooks: PropTypes.func.isRequired,
+  toggleBookModal: PropTypes.func.isRequired
+};
+
+export default connect(
+    mapStateToProps,
+    mapDispatchToProps
+)(Books);
