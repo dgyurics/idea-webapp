@@ -1,10 +1,10 @@
 import React, { useContext, useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
-import ScrollContainer from 'react-indiana-drag-scroll';
-import { getBooks , toggleBookModal } from '../../../actions/book';
 import { Icon } from 'react-icons-kit';
 import { settings } from 'react-icons-kit/feather/settings';
+import ScrollContainer from 'react-indiana-drag-scroll';
+import { getBooks, toggleBookModal } from '../../../actions/book';
 import { UserContext } from '../../context/UserContext';
 import Admin from './admin/Admin';
 import './Books.css';

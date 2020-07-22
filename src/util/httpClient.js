@@ -1,4 +1,5 @@
 import axios from 'axios';
+// eslint-disable-next-line import/no-cycle
 import { removeJwt, updateJwt, getJwt } from './tokenStorage';
 
 const transport = axios.create({
@@ -70,8 +71,13 @@ export const removeBook = bookId => transport({
 
 transport.interceptors.request.use((config) => {
   const token = getJwt();
-  config.headers.Authorization = token ? `Bearer ${token}` : '';
-  return config;
+  return {
+    ...config,
+    headers: {
+      ...config.headers,
+      Authorization: token ? `Bearer ${token}` : ''
+    }
+  };
 });
 
 transport.interceptors.response.use(response => response, (error) => {
@@ -83,9 +89,11 @@ transport.interceptors.response.use(response => response, (error) => {
     return refreshJwt()
         .then((res) => {
           updateJwt(res.data);
-          error.config.headers.Authorization = `Bearer ${getJwt()}`;
-          error.config.baseURL = undefined;
-          return transport.request(error.config);
+          return transport.request({
+            ...error.config,
+            headers: { Authorization: `Bearer ${getJwt()}` },
+            baseURL: undefined
+          });
         })
         .catch(() => {
           removeJwt();

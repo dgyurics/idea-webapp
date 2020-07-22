@@ -37,7 +37,10 @@ const CreateBook = ({ visible, addBook, error }) => {
 CreateBook.propTypes = {
   visible: PropTypes.bool.isRequired,
   addBook: PropTypes.func.isRequired,
-  error: PropTypes.object.isRequired
+  error: PropTypes.shape({
+    msg: PropTypes.string,
+    code: PropTypes.number
+  }).isRequired
 };
 
 const mapStateToProps = state => ({

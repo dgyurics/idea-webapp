@@ -3,7 +3,9 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { removeBook } from '../../../../../actions/book';
 
-const RemoveBook = ({ books, visible, removeBook, error }) => {
+const RemoveBook = ({
+  books, visible, removeBook, error
+}) => {
   const defaultState = { value: 'DEFAULT', errorMsg: '' };
   const [state, setState] = useState(defaultState);
 
@@ -43,7 +45,10 @@ RemoveBook.propTypes = {
   books: PropTypes.arrayOf(PropTypes.string).isRequired,
   visible: PropTypes.bool.isRequired,
   removeBook: PropTypes.func.isRequired,
-  error: PropTypes.object.isRequired,
+  error: PropTypes.shape({
+    msg: PropTypes.string,
+    code: PropTypes.number
+  }).isRequired
 };
 
 const mapStateToProps = state => ({
