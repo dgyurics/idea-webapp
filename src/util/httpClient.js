@@ -1,5 +1,7 @@
 import axios from 'axios';
-import { getJwt } from './jwtUtil';
+import { decodeJwt, getJwt, removeJwt, setJwt } from './jwtUtil';
+import store from '../store';
+import { REFRESH_JWT_FAIL, REFRESH_JWT_PENDING, REFRESH_JWT_SUCCESS } from '../constants/authTypes';
 
 const transport = axios.create({
   baseURL: `${API_URL}`,
@@ -79,26 +81,33 @@ transport.interceptors.request.use((config) => {
   };
 });
 
-//
-// transport.interceptors.response.use(response => response, (error) => {
-//   const path = error?.response?.config ? new URL(error.response.config.url).pathname : null;
-//   if (error?.response?.status === 401 && path !== '/refresh') {
-//     // try to get new jwt token (refresh token stored as http only cookie)
-//     // if success, re-attempt the initial http request
-//     // if fail, redirect user to login page
-//     return refreshJwt()
-//         .then((res) => {
-//           setJwt(res.data);
-//           return transport.request({
-//             ...error.config,
-//             headers: { Authorization: `Bearer ${getJwt()}` },
-//             baseURL: undefined
-//           });
-//         })
-//         .catch(() => {
-//           removeJwt();
-//           return new Promise((resolve, reject) => reject(error));
-//         });
-//   }
-//   return new Promise((resolve, reject) => reject(error));
-// });
+
+transport.interceptors.response.use(response => response, (error) => {
+  const path = error?.response?.config ? new URL(error.response.config.url).pathname : null;
+  if (error?.response?.status === 401 && path !== '/refresh') {
+    // try to get new jwt token (refresh token stored as http only cookie)
+    // if success, re-attempt the initial http request
+    // if fail, redirect user to login page
+    store.dispatch({ type: REFRESH_JWT_PENDING });
+
+    return refreshJwt()
+        .then((res) => {
+          store.dispatch({
+            type: REFRESH_JWT_SUCCESS,
+            payload: decodeJwt(res.data)
+          });
+          setJwt(res.data);
+          return transport.request({
+            ...error.config,
+            headers: { Authorization: `Bearer ${getJwt()}` },
+            baseURL: undefined
+          });
+        })
+        .catch(() => {
+          store.dispatch({ type: REFRESH_JWT_FAIL });
+          removeJwt();
+          return new Promise((resolve, reject) => reject(error));
+        });
+  }
+  return new Promise((resolve, reject) => reject(error));
+});

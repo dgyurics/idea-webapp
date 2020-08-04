@@ -7,6 +7,7 @@ import {
   LOGOUT_FAIL,
   LOGOUT_PENDING,
   LOGOUT_SUCCESS,
+  REFRESH_JWT_SUCCESS,
   REGISTRATION_FAIL,
   REGISTRATION_PENDING,
   REGISTRATION_SUCCESS,
@@ -99,6 +100,7 @@ const authReducer = (state = initState, action) => {
         showForgotPasswordModal: false,
         showSuccessModal: true
       };
+    case REFRESH_JWT_SUCCESS:
     case LOAD_LOCAL_JWT_SUCCESS:
     case LOGIN_SUCCESS:
       return {

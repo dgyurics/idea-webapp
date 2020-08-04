@@ -35,6 +35,7 @@ import {
   LOAD_LOCAL_JWT_EXPIRED
 } from '../constants/authTypes';
 import { decodeJwt, getJwt, isExpired, removeJwt, setJwt } from '../util/jwtUtil';
+import { REFRESH_JWT_PENDING } from '../constants/authTypes';
 
 export const init = () => (dispatch) => {
   dispatch({ type: LOAD_LOCAL_JWT_PENDING });
