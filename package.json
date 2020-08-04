@@ -7,7 +7,8 @@
     "start": "webpack-dev-server --open --config webpack.dev.js",
     "watch": "webpack --watch",
     "build": "webpack --config webpack.prod.js",
-    "test": "jest"
+    "test": "jest",
+    "lint": "npx eslint src"
   },
   "keywords": [],
   "author": "dgyurics@gmail.com",
@@ -43,7 +44,6 @@
     "enzyme-adapter-react-16": "^1.11.2",
     "eslint": "^5.16.0",
     "eslint-config-airbnb": "^17.1.0",
-    "eslint-loader": "^2.1.2",
     "eslint-plugin-import": "^2.16.0",
     "eslint-plugin-jsx-a11y": "^6.2.1",
     "eslint-plugin-react": "^7.12.4",

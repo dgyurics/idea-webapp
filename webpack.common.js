@@ -26,7 +26,6 @@ module.exports = {
       {
         enforce: 'pre',
         test: /\.(js|jsx)$/,
-        // use: ['babel-loader', 'eslint-loader'],
         use: ['babel-loader'],
       },
       {
