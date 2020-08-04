@@ -1,6 +1,5 @@
 import axios from 'axios';
-// eslint-disable-next-line import/no-cycle
-import { removeJwt, updateJwt, getJwt } from './tokenStorage';
+import { getJwt } from './jwtUtil';
 
 const transport = axios.create({
   baseURL: `${API_URL}`,
@@ -36,13 +35,13 @@ export const forgotPassword = data => transport({
   data,
 });
 
-export const isValidResetCode = (userId, data) => transport({
+export const validateResetCode = (userId, data) => transport({
   method: 'post',
   url: `/forgot-password/valid-reset-code/${userId}`,
   data,
 });
 
-export const resetPassword = (userId, data) => transport({
+export const updatePassword = (userId, data) => transport({
   method: 'post',
   url: `/forgot-password/${userId}`,
   data,
@@ -80,25 +79,26 @@ transport.interceptors.request.use((config) => {
   };
 });
 
-transport.interceptors.response.use(response => response, (error) => {
-  const path = error?.response?.config ? new URL(error.response.config.url).pathname : null;
-  if (error?.response?.status === 401 && path !== '/refresh') {
-    // try to get new jwt token (refresh token stored as http only cookie)
-    // if success, re-attempt the initial http request
-    // if fail, redirect user to login page
-    return refreshJwt()
-        .then((res) => {
-          updateJwt(res.data);
-          return transport.request({
-            ...error.config,
-            headers: { Authorization: `Bearer ${getJwt()}` },
-            baseURL: undefined
-          });
-        })
-        .catch(() => {
-          removeJwt();
-          return new Promise((resolve, reject) => reject(error));
-        });
-  }
-  return new Promise((resolve, reject) => reject(error));
-});
+//
+// transport.interceptors.response.use(response => response, (error) => {
+//   const path = error?.response?.config ? new URL(error.response.config.url).pathname : null;
+//   if (error?.response?.status === 401 && path !== '/refresh') {
+//     // try to get new jwt token (refresh token stored as http only cookie)
+//     // if success, re-attempt the initial http request
+//     // if fail, redirect user to login page
+//     return refreshJwt()
+//         .then((res) => {
+//           setJwt(res.data);
+//           return transport.request({
+//             ...error.config,
+//             headers: { Authorization: `Bearer ${getJwt()}` },
+//             baseURL: undefined
+//           });
+//         })
+//         .catch(() => {
+//           removeJwt();
+//           return new Promise((resolve, reject) => reject(error));
+//         });
+//   }
+//   return new Promise((resolve, reject) => reject(error));
+// });

@@ -3,14 +3,14 @@ import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { addBook } from '../../../../../actions/book';
 
-const CreateBook = ({ visible, addBook, error }) => {
-  const defaultState = { title: '', src: '', errorMsg: '' };
-  const [state, setState] = useState(defaultState);
+const CreateBook = ({ addBook, error }) => {
+  const initState = { title: '', src: '', errorMsg: '' };
+  const [state, setState] = useState(initState);
 
   useEffect(() => {
     if (error) setState({ ...state, errorMsg: error.msg });
-    else setState(defaultState);
-  }, [visible, error]);
+    else setState(initState);
+  }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -23,7 +23,7 @@ const CreateBook = ({ visible, addBook, error }) => {
   };
 
   return (
-    <div className={visible ? '' : 'hidden'}>
+    <div>
       <span className="modal__error">{state.errorMsg}</span>
       <form onSubmit={handleSubmit} className="modal__form">
         <input type="text" name="title" placeholder="book title" value={state.title} onChange={handleChange} className="modal__input" />
@@ -35,7 +35,6 @@ const CreateBook = ({ visible, addBook, error }) => {
 };
 
 CreateBook.propTypes = {
-  visible: PropTypes.bool.isRequired,
   addBook: PropTypes.func.isRequired,
   error: PropTypes.shape({
     msg: PropTypes.string,
@@ -44,8 +43,7 @@ CreateBook.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  visible: state.showAddBookModal,
-  error: state.error
+  error: state.books.error
 });
 
 const mapDispatchToProps = dispatch => ({

@@ -1,16 +1,16 @@
-import * as types from '../constants/bookTypes';
+import { bookTypes as types } from '../constants';
 
 const initialState = {
   showBookModal: false,
   showAddBookModal: false,
   showRemoveBookModal: false,
   showSuccessModal: false,
-  error: null,
+  error: {},
   books: []
 };
 
 const getError = (error, msg404) => {
-  const errorStatus = error.payload?.response?.status;
+  const errorStatus = error?.response?.status;
   let errorMsg;
   if (errorStatus === 401 || errorStatus === 403) {
     errorMsg = 'Unauthorized';
@@ -71,7 +71,7 @@ const booksReducer = (state = initialState, action) => {
         showAddBookModal: false,
         showRemoveBookModal: false,
         showSuccessModal: false,
-        error: null
+        error: initialState.error
       };
     case types.TOGGLE_ADD_BOOK_MODAL:
       return {

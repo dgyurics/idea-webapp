@@ -8,25 +8,23 @@ import './Success.css';
  * Dialog indicating everything went well
 */
 const Success = (props) => {
-  const { visible, message } = props;
+  const { message } = props;
   return (
-    <div className={visible ? 'modal__success' : 'hidden'}>
+    <div>
       <div className="modal__success__icon">
         <Icon size="100%" icon={checkCircle} />
       </div>
-      <div>{message}</div>
+      <div className="modal__message">{message}</div>
     </div>
   );
 };
 
 Success.propTypes = {
-  message: PropTypes.string,
-  visible: PropTypes.bool,
+  message: PropTypes.string
 };
 
 Success.defaultProps = {
-  message: '',
-  visible: false,
+  message: 'Success'
 };
 
 export default Success;

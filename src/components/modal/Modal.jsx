@@ -9,10 +9,11 @@ class Modal extends Component {
     if (e.target === e.currentTarget) {
       onClose();
     }
-  }
+  };
 
   render() {
     const { children, visible } = this.props;
+    // Do not render at all if !visible
     const modalVisible = visible ? 'modal__container modal__container--visible'
       : 'modal__container';
     return ReactDOM.createPortal(

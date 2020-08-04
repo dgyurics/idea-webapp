@@ -11,7 +11,6 @@ import {
   toggleRemoveBookModal
 } from '../../../../actions/book';
 
-/* Component for adding and removing books */
 const Admin = ({
   visible,
   visibleAddBook,
@@ -32,9 +31,9 @@ const Admin = ({
   return (
     <Modal visible={visible} onClose={() => toggle()}>
       { renderOptions() }
-      <SuccessForm visible={visibleSuccess} message="success" />
-      <RemoveBookForm visible={visibleRemoveBook} successCb={() => {}} />
-      <AddBookForm visible={visibleAddBook} successCb={() => {}} />
+      { visibleSuccess ? <SuccessForm message="success" /> : null }
+      { visibleRemoveBook ? <RemoveBookForm /> : null }
+      { visibleAddBook ? <AddBookForm /> : null }
     </Modal>
   );
 };
@@ -46,10 +45,10 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  visible: state.showBookModal,
-  visibleAddBook: state.showAddBookModal,
-  visibleRemoveBook: state.showRemoveBookModal,
-  visibleSuccess: state.showSuccessModal
+  visible: state.books.showBookModal,
+  visibleAddBook: state.books.showAddBookModal,
+  visibleRemoveBook: state.books.showRemoveBookModal,
+  visibleSuccess: state.books.showSuccessModal
 });
 
 Admin.propTypes = {

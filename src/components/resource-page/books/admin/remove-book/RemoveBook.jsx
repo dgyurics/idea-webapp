@@ -4,7 +4,7 @@ import PropTypes from 'prop-types';
 import { removeBook } from '../../../../../actions/book';
 
 const RemoveBook = ({
-  books, visible, removeBook, error
+  books, removeBook, error
 }) => {
   const defaultState = { value: 'DEFAULT', errorMsg: '' };
   const [state, setState] = useState(defaultState);
@@ -12,7 +12,7 @@ const RemoveBook = ({
   useEffect(() => {
     if (error) setState({ ...state, errorMsg: error.msg });
     else setState(defaultState);
-  }, [visible, error]);
+  }, [error]);
 
   const handleSubmit = (e) => {
     e.preventDefault();
@@ -28,7 +28,7 @@ const RemoveBook = ({
   ));
 
   return (
-    <div className={visible ? '' : 'hidden'}>
+    <div>
       <span className="modal__error">{state.errorMsg}</span>
       <form onSubmit={handleSubmit} className="modal__form">
         <select name="book" value={state.value} onChange={handleChange} className="modal__input modal__input--select">
@@ -43,7 +43,6 @@ const RemoveBook = ({
 
 RemoveBook.propTypes = {
   books: PropTypes.arrayOf(PropTypes.string).isRequired,
-  visible: PropTypes.bool.isRequired,
   removeBook: PropTypes.func.isRequired,
   error: PropTypes.shape({
     msg: PropTypes.string,
@@ -52,9 +51,8 @@ RemoveBook.propTypes = {
 };
 
 const mapStateToProps = state => ({
-  books: state.books,
-  visible: state.showRemoveBookModal,
-  error: state.error
+  books: state.books.books,
+  error: state.books.error
 });
 
 const mapDispatchToProps = dispatch => ({

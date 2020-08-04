@@ -1,20 +1,19 @@
-import React, { useContext, useState, useEffect } from 'react';
+import React, { useEffect } from 'react';
+import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
 import { info } from 'react-icons-kit/feather/info';
-import { UserContext } from '../context/UserContext';
 import NavBar from '../navigation/Navigation';
+import { toggleHelpModal } from '../../actions/auth';
 import Login from './login/Login';
-import Help from './help/Help';
+import Help from './help/HelpModal';
 import './AuthenticationPage.css';
 
-const AuthenticationPage = (props) => {
-  const { isLoggedIn } = useContext(UserContext);
-  const [showModal, setShowModal] = useState(false);
+const AuthenticationPage = ({ isLoggedIn, toggleModal, props }) => {
   const { match: { params: { userId } } } = props;
 
   useEffect(() => {
-    if (userId) setShowModal(true);
+    if (userId) toggleModal(userId);
   }, [userId]);
 
   return (
@@ -24,21 +23,32 @@ const AuthenticationPage = (props) => {
         <div className="auth__login__container">
           <Login />
           <div className={isLoggedIn ? 'hidden' : 'auth__icon__container'}>
-            <Icon size="100%" icon={info} onClick={() => setShowModal(true)} onKeyDown={() => setShowModal(true)} />
+            <Icon size="100%" icon={info} onClick={() => toggleModal()} onKeyDown={() => toggleModal(true)} />
           </div>
         </div>
-        <Help visible={showModal} onClose={() => setShowModal(false)} userId={userId} />
+        <Help />
       </div>
     </div>
   );
 };
 
+const mapStateToProps = (state, props) => ({
+  isLoggedIn: state.auth.loggedIn,
+  props
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleModal: (userId) => dispatch(toggleHelpModal(userId))
+});
+
 AuthenticationPage.propTypes = {
+  isLoggedIn: PropTypes.bool.isRequired,
   match: PropTypes.shape({
     params: PropTypes.shape({
       userId: PropTypes.string,
     }),
   }),
+  toggleModal: PropTypes.func.isRequired
 };
 
 AuthenticationPage.defaultProps = {
@@ -47,4 +57,7 @@ AuthenticationPage.defaultProps = {
   },
 };
 
-export default AuthenticationPage;
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(AuthenticationPage);

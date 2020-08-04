@@ -1,20 +1,18 @@
-import React, { useContext, useEffect } from 'react';
+import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import { Icon } from 'react-icons-kit';
 import { settings } from 'react-icons-kit/feather/settings';
 import ScrollContainer from 'react-indiana-drag-scroll';
 import { getBooks, toggleBookModal } from '../../../actions/book';
-import { UserContext } from '../../context/UserContext';
 import Admin from './admin/Admin';
 import './Books.css';
 
-const Books = ({ books, getBooks, toggleBookModal }) => {
+const Books = ({ isAdmin, books, getBooks, toggleBookModal }) => {
   useEffect(() => {
     getBooks();
   }, []);
 
-  const { isAdmin } = useContext(UserContext);
   const renderBooks = () => books.map(book => (
     <div className="book-container" key={book.id}>
       <img className="book" src={book.src} alt={book.alt} />
@@ -38,11 +36,13 @@ const mapDispatchToProps = dispatch => ({
 });
 
 const mapStateToProps = state => ({
-  books: state.books
+  books: state.books.books,
+  isAdmin: state.auth.user.admin
 });
 
 Books.propTypes = {
-  books: PropTypes.arrayOf(PropTypes.string).isRequired,
+  isAdmin: PropTypes.bool.isRequired,
+  books: PropTypes.arrayOf(PropTypes.object).isRequired,
   getBooks: PropTypes.func.isRequired,
   toggleBookModal: PropTypes.func.isRequired
 };

@@ -2,6 +2,10 @@
   width: 2.5rem;
   margin: 1.5rem auto;
 }
+.modal__message {
+  text-transform: uppercase;
+  letter-spacing: 1px;
+}
 .modal__success {
   display: inline-block;
   letter-spacing: 1px;

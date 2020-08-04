@@ -1,8 +1,7 @@
 {
   "parser": "babel-eslint",
   "env": {
-    "browser": true,
-    "node": true
+    "browser": true
   },
   "extends": "airbnb",
   "rules": {
@@ -22,6 +21,6 @@
     "document": true,
     "localStorage": true,
     "API_URL": true,
-    "PRODUCTION": true,
+    "PRODUCTION": true
   }
 }
