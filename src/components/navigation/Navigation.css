@@ -1,33 +1,18 @@
 .navigation {
-  transition: all 600ms;
   display: block;
   width: 100%;
-  margin-bottom: -5rem;
-  position: relative;
+  position: absolute;
   z-index: 1;
 }
-.navigation--hidden {
-  margin-top: -20rem;
-}
-.navigation__menu,
-.navigation__toggle {
-  line-height: 5rem;
-  text-align: right;
-}
-.navigation__toggle {
-  color: #eee;
-}
 .navigation__menu {
-  height: 20rem;
-  background-color: #fff;
-  border-bottom: 1px solid #0000002e;
-  text-align: center;
-}
-.navigation__menu__item {
-  margin: 0 1rem;
-  color: #4e4c4c;
-  letter-spacing: .2rem;
-  border-top: 1px solid #0000000f;
+  padding: 0;
+  margin: 0;
+  display: flex;
+  flex-wrap: nowrap;
+  justify-content: center;
+  text-transform: uppercase;
+  list-style: none;
+  font-size: 1.2rem;
 }
 .navigation__menu__link {
   cursor: pointer;
@@ -35,68 +20,19 @@
 .navigation__menu__link:hover {
   color: #4e4c4c;
 }
-.navigation__menu__items {
-  padding: 0;
-  margin: 0;
-  text-transform: uppercase;
-  list-style: none;
-  font-size: 1.2rem;
-}
-.navigation__menu-icon {
-  display: inline;
-}
-.navigation__menu-icon {
-  color: #eee;
-}
-.navigation__menu-icon--black {
+.navigation__menu__item {
+  margin: 1.5rem 1rem 1rem 1rem;
   color: #4e4c4c;
-}
-.navigation__icon__container {
-  cursor: pointer;
-  display: inline-block;
-  margin: 0 2rem;
-  width: 2.5rem;
-  height: 100%;
-}
-.navigation__coming_soon {
-  font-size: 1.5rem;
-  letter-spacing: 1px;
-  text-transform: uppercase;
+  letter-spacing: .2rem;
 }
 
 /* screens larger than mobile phone */
 @media (orientation: landscape) {
-  .navigation {
-    transition: all 400ms;
-    height: 12rem;
-    margin-bottom: -6rem;
-  }
-  .navigation--hidden {
-    margin-top: -6rem;
-  }
   .navigation__menu {
-    text-align: right;
-    padding: 0 2rem;
+    justify-content: flex-end;
   }
-  .navigation__menu,
-  .navigation__toggle {
-    height: 6rem;
-    line-height: 6rem;
-  }
-  .navigation__icon__container {
-
-  }
-  .navigation__icon__container {
-    width: 3rem;
-  }
-  .navigation__menu__item {
-    margin: 0 -.2rem 0 2.5rem;
-    border: none;
-  }
-  .navigation__menu__item,
-  .navigation__menu__items {
-    display: inline;
-    border: none;
+  .navigation__menu__item--last {
+    margin-right: 2.5rem;
   }
 }
 
