@@ -1,0 +1,30 @@
+.drop-down {
+    position: relative;
+    color: #555555;
+}
+.drop-down__content-hidden {
+    display: none;
+}
+.drop-down__content {
+    position: absolute;
+    background-color: #f9f9f9;
+    min-width: 10rem;
+    width: 100%;
+    box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+    z-index: 1;
+}
+.drop-down__items {
+    padding: 0;
+    margin: 0;
+    list-style: none;
+}
+.drop-down__item {
+    text-align: center;
+    padding: 5px 0 5px 0;
+    font-size: 1.2rem;
+    text-transform: lowercase;
+    margin: 0;
+}
+.drop-down__item:hover {
+    background-color: #f1f1f1;
+}

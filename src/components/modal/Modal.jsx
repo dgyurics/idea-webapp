@@ -13,11 +13,8 @@ class Modal extends Component {
 
   render() {
     const { children, visible } = this.props;
-    // Do not render at all if !visible
-    const modalVisible = visible ? 'modal__container modal__container--visible'
-      : 'modal__container';
-    return ReactDOM.createPortal(
-      <div onClick={this.handleClose} onKeyDown={this.handleClose} className={modalVisible}>
+    return visible ? ReactDOM.createPortal(
+      <div onClick={this.handleClose} onKeyDown={this.handleClose} className="modal__container">
         <div className="modal">
           <div className="modal__content">
             {children}
@@ -25,7 +22,7 @@ class Modal extends Component {
         </div>
       </div>,
       document.body,
-    );
+    ) : null
   }
 }
 

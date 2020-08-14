@@ -1,148 +1,131 @@
-import React, { Component } from 'react';
-import Recaptcha from 'react-recaptcha';
+import React, { useState, useEffect }  from 'react';
+import { connect } from 'react-redux';
+import PropTypes from 'prop-types';
 import NavBar from '../navigation/Navigation';
-import { contactUs } from '../../util/httpClient';
+import { contactUs, toggleForm } from '../../actions/contact';
 import './ContactPage.css';
 
-let recaptchaInstance;
+const ContactPage = ({ contactUs, toggleForm, showForm, showSuccess, error }) => {
+  const initState = { contactInfo: '', message: '', errorMsg: '' };
+  const [state, setState] = useState(initState);
 
-class ContactPage extends Component {
-  state = {
-    contactInfo: '',
-    message: '',
-    sent: false,
-    mobileView: false,
-  };
+  useEffect(() => {
+    if (error) setState({ ...state, errorMsg: error.msg });
+    else setState(initState);
+  }, [error]);
 
-  updateDimensions = () => {
-    if (window.innerWidth < 1200) {
-      this.setState({ mobileView: true });
-    } else {
-      this.setState({ mobileView: false });
-    }
-  }
-
-  componentDidMount = () => {
-    this.updateDimensions();
-    window.addEventListener('resize', this.updateDimensions);
-  }
-
-  componentWillUnmount = () => {
-    window.removeEventListener('resize', this.updateDimensions);
-  }
-
-  validContactInfo = (contactInfo) => {
+  const validContactInfo = (contactInfo) => {
     const contactInfoCleaned = String(contactInfo).toLowerCase().trim();
     const emailRegEx = /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
     const phoneRegEx = /^(?:(?:\(?(?:00|\+)([1-4]\d\d|[1-9]\d?)\)?)?[-. \\/]?)?((?:\(?\d{1,}\)?[-. \\/]?){0,})(?:[-. \\/]?(?:#|ext\.?|extension|x)[-. \\/]?(\d+))?$/i;
     return emailRegEx.test(contactInfoCleaned) || phoneRegEx.test(contactInfoCleaned);
-  }
+  };
 
-  validMessage = message => message.trim() !== '';
+  const isValidMessage = message => message.trim() !== '';
 
-  // called when form is submitted
-  handleSubmit = (event) => {
-    event.preventDefault();
-    const { message, contactInfo } = this.state;
+  const handleSubmit = (e) => {
+    e.preventDefault();
 
-    if (!this.validContactInfo(contactInfo)) {
-      this.setState({ error: 'Invalid contact information' });
-      return;
-    }
+    if (!validContactInfo(state.contactInfo))
+      setState({ ...state, errorMsg: 'Invalid contact information' });
+    else if (!isValidMessage(state.message))
+      setState({ ...state, errorMsg: 'Message cannot be blank' });
+    else
+      contactUs(state.contactInfo, state.message);
+  };
 
-    if (!this.validMessage(message)) {
-      this.setState({ error: 'Message cannot be blank' });
-      return;
-    }
+  const handleChange = (e) => {
+    const { name, value } = e.target;
+    setState({ ...state, errorMsg: '', [name]: value });
+  };
 
-    recaptchaInstance.execute();
-  }
-
-  // called after captcha has been verified
-  verifyCallBack = (reCaptchaResponse) => {
-    let { contactInfo, message } = this.state;
-    contactInfo = contactInfo.trim();
-    message = message.trim();
-
-    contactUs({ contactInfo, message, reCaptchaResponse }).then(() => {
-      this.setState({
-        contactInfo: '',
-        message: '',
-        error: '',
-        sent: true,
-      });
-    }).catch(() => {
-      this.setState({ error: 'Something went wrong, please try again later' });
-    });
-  }
-
-  renderReCaptcha = () => (
-    <Recaptcha
-      ref={(e) => { recaptchaInstance = e; }}
-      sitekey="6LfXphwUAAAAADsLEFWB4qa7R_62ox95GKS0gEiA"
-      render="explicit"
-      size="invisible"
-      verifyCallback={this.verifyCallBack}
-    />
-  );
-
-  handleChange = name => (event) => {
-    this.setState({ [name]: event.target.value, error: '' });
-  }
-
-  renderFormItem = (contactInfo, message, error, sent) => (sent ? null : (
-    <div>
-      <span className="contact-page__error">{error}</span>
-      <form className="contact-page__form" onSubmit={this.handleSubmit}>
+  const renderForm = () => (
+    <div className="contact-page__form--margin">
+      <span className="contact-page__error">{state.errorMsg}</span>
+      <form className="contact-page__form" onSubmit={handleSubmit}>
         <div className="contact-page__form-element">
           <label htmlFor="contact-info">
             contact information
-            <input type="text" className="contact-page__info" name="contact-info" value={contactInfo} onChange={this.handleChange('contactInfo')} autoCorrect="off" autoCapitalize="none" />
+            <input type="text" className="contact-page__info" name="contactInfo" value={state.contactInfo} onChange={handleChange} autoCorrect="off" autoCapitalize="none" />
           </label>
         </div>
         <div className="contact-page__form-element">
           <label htmlFor="message">
             message
-            <textarea type="text" className="contact-page__message" name="message" value={message} onChange={this.handleChange('message')} />
+            <textarea type="text" className="contact-page__message" name="message" value={state.message} onChange={handleChange} />
           </label>
         </div>
         <div className="contact-page__form-element">
-          <button className="contact-page__submit" disabled={!contactInfo.trim()} type="submit">send</button>
+          <button className="contact-page__submit" disabled={!state.contactInfo.trim()} type="submit">send</button>
         </div>
       </form>
     </div>
-  ));
+  );
 
-  renderSentItem = sent => (sent
-    ? (
-      <div className="contact-page__success">
+  const renderAbout = () => (
+    <div>
+      <p>
+        Lasting relationships, travel, experiences, knowledge, and health are all underrated in this day and age.
+        Stuff won't make you happy. Okay, yeah, we need stuff, but if you're like me, you live
+        in a world that tells you all of your problems can be solved with the right product.
+        After realizing this is not true, I decided to cut back on my spending to focus on building
+        a better lifestyle.
+      </p>
+      <p>
+        Granted things like clothes, shampoo, and cookware are necessary. If you're anything like me, you really just want the basics.
+        Something that gets the job done, lasts forever, and looks good. That's why I created this website. To help people
+        like you sort through the distractions out there.
+      </p>
+      <p>
+        <i className="contact-page__disclaimer">Disclaimer. I am not affiliated with nor do I sell any of the products listed.</i>
+      </p>
+      { showForm || showSuccess ? null : <button type="button" onClick={() => toggleForm()} className="contact-page__submit">say hello</button> }
+    </div>
+  );
+
+  const renderSuccess = () => (
+      <div>
         <p>Message sent, thank you.</p>
       </div>
-    )
-    : null
-  )
+  );
 
-  render() {
-    const {
-      contactInfo,
-      message,
-      error,
-      sent,
-      mobileView,
-    } = this.state;
-    return (
-      <div className="contact-page">
-        <NavBar whiteBackground={mobileView} />
-        <div className="contact-page__container">
-          <div className="contact-page__main">
-            { this.renderFormItem(contactInfo, message, error, sent) }
-            { this.renderSentItem(sent) }
-            { this.renderReCaptcha() }
-          </div>
+  return (
+    <div className="contact-page">
+      <NavBar />
+      <div className="contact-page__container">
+        <div className="contact-page__main">
+          { renderAbout() }
+          { showForm ? renderForm() : null }
+          { showSuccess ? renderSuccess() : null }
         </div>
       </div>
-    );
-  }
-}
+    </div>
+  );
+};
 
-export default ContactPage;
+ContactPage.propTypes = {
+  toggleForm: PropTypes.func.isRequired,
+  contactUs: PropTypes.func.isRequired,
+  showForm: PropTypes.bool.isRequired,
+  showSuccess: PropTypes.bool.isRequired,
+  error: PropTypes.shape({
+    msg: PropTypes.string,
+    code: PropTypes.number
+  }).isRequired
+};
+
+const mapStateToProps = state => ({
+  showForm: state.contact.showForm,
+  showSuccess: state.contact.showSuccess,
+  error: state.contact.error
+});
+
+const mapDispatchToProps = dispatch => ({
+  toggleForm: () => dispatch(toggleForm()),
+  contactUs: (contactInfo, msg) => dispatch(contactUs(contactInfo, msg))
+});
+
+export default connect(
+  mapStateToProps,
+  mapDispatchToProps
+)(ContactPage);

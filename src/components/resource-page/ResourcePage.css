@@ -3,29 +3,19 @@
   height: 100%;
 }
 .resource-page__container {
-  height: calc(100% - 4rem);
   width: 100%;
+  height: 100%;
   background-color: white;
-  overflow: hidden;
+  overflow-y: auto;
 }
 .resource-page__main {
   height: 100%;
   width: 100%;
 }
-
 .resource-footer {
-  font-family: 'Poiret One', cursive;
-  color: rgba(255, 255, 255, 0.73);
-  font-size: 1.2rem;
   background-color: black;
-  text-transform: uppercase;
-  letter-spacing: 1rem;
-  line-height: 4rem;
-  text-align: center;
-}
-/* screens larger than mobile phone */
-@media (min-width: 1200px) {
-  .resource-footer {
-    font-size: 1vmax;
-  }
+  position: absolute;
+  bottom: 0;
+  height: 3rem;
+  width: 100%;
 }

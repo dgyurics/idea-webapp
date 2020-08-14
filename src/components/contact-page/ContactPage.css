@@ -5,21 +5,24 @@
 .contact-page__container {
   height: 100%;
   width: 100%;
+  overflow: hidden;
   background-size: cover;
   background-image: url("./image/background.png");
 }
 .contact-page__main {
   height: 100%;
+  overflow-y: auto;
   background-color: white;
-  padding: 3rem;
+  padding: 7rem 3rem 0 3rem;
 }
-.contact-page__success {
-  font-weight: 600;
-}
+.contact-page__success {}
 .contact-page__error {
   color: #ff4e4e;
   font-weight: 600;
   display: block;
+}
+.contact-page__form--margin {
+  margin-top: 15%;
 }
 .contact-page__form {
   font-size: 1.2rem;
@@ -32,21 +35,22 @@
 .contact-page__message {
   width: 100%;
 }
+.contact-page__disclaimer {
+ font-size: 1.3rem;
+}
 .contact-page__message {
   height: 10rem;
   resize: none;
 }
 .contact-page__submit {
-  margin: 0 auto;
+  margin: 15% auto;
   display: block;
 }
-#g-recaptcha {
-  display: none;
-}
+/* screens larger than mobile phone */
 @media (min-width: 1200px) {
   .contact-page__main {
     width: 40%;
-    padding: 3rem;
+    padding: 5rem 3rem 0 3rem;
   }
   .contact-page__form-element,
   .contact-page__error {

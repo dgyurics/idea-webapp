@@ -8,12 +8,7 @@ const Navigation = () => {
       <ol className="navigation__menu no-touch">
         <Link to="/resource" className="navigation__menu__link">
           <li className="navigation__menu__item">
-            product
-          </li>
-        </Link>
-        <Link to="/resource" className="navigation__menu__link">
-          <li className="navigation__menu__item">
-            excerpt
+            lifestyle
           </li>
         </Link>
         <Link to="/contact" className="navigation__menu__link">

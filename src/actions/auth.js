@@ -1,4 +1,3 @@
-import * as types from '../constants/authTypes';
 import {
   login as httpLogin,
   logout as httpLogout,
@@ -32,10 +31,10 @@ import {
   LOAD_LOCAL_JWT_PENDING,
   LOAD_LOCAL_JWT_SUCCESS,
   LOAD_LOCAL_JWT_FAIL,
-  LOAD_LOCAL_JWT_EXPIRED
+  LOAD_LOCAL_JWT_EXPIRED,
+  LOGIN_PENDING
 } from '../constants/authTypes';
 import { decodeJwt, getJwt, isExpired, removeJwt, setJwt } from '../util/jwtUtil';
-import { REFRESH_JWT_PENDING } from '../constants/authTypes';
 
 export const init = () => (dispatch) => {
   dispatch({ type: LOAD_LOCAL_JWT_PENDING });
@@ -56,7 +55,7 @@ export const init = () => (dispatch) => {
 };
 
 export const login = (credentials) => (dispatch) => {
-  dispatch({ type: types.LOGIN_PENDING });
+  dispatch({ type: LOGIN_PENDING });
   return httpLogin(
     credentials,
     (res) => {

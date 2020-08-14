@@ -1,10 +1,7 @@
-.modal__container--visible {
-  display: block !important;
-}
 /* backdrop */
 .modal__container {
   position: fixed;
-  display: none;
+  display: block;
   z-index: 1;
   height: 100%;
   width: 100%;
@@ -14,15 +11,17 @@
 }
 /* actual modal */
 .modal {
+  max-height: 90%;
+  overflow-y: auto;
   color: #000;
   position: fixed;
   display: block;
   text-align: center;
-  width: 90%;
+  width: 85%;
   z-index: 2;
   top: 35%;
   left: 50%;
-  transform: translate(-50%,-50%);
+  transform: translate(-50%,-35%);
   background-color: #fff;
 }
 .modal__content {
@@ -69,6 +68,7 @@
 @media (max-height: 450px) {
   .modal {
     top: 50%;
+    transform: translate(-50%,-50%);
   }
   .modal__content {
     padding: 3rem;

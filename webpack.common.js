@@ -65,9 +65,9 @@ module.exports = {
         'API_URL': API_URL[environment],
         'PRODUCTION': PRODUCTION
     }),
-    new CopyWebpackPlugin([
-        {from:'src/images', to:'images'}
-    ]),
+    // new CopyWebpackPlugin([
+    //     {from:'src/images', to:'images'}
+    // ]),
   ],
   devServer: {
     contentBase: './dist',

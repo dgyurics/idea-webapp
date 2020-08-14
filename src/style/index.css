@@ -11,6 +11,14 @@
        url('./fonts/poiret-one-v5-latin-regular.svg#PoiretOne') format('svg'); /* Legacy iOS */
 }
 
+@font-face {
+    font-family: 'Reenie Beanie';
+    font-style: normal;
+    font-weight: 400;
+    src: local('Reenie Beanie'),
+        url('./fonts/ReenieBeanie-Regular.ttf') format('truetype')
+}
+
 html {
   overflow: hidden;
 }

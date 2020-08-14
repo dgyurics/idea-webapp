@@ -13,20 +13,19 @@
   text-transform: uppercase;
   list-style: none;
   font-size: 1.2rem;
+  color: #555;
 }
 .navigation__menu__link {
   cursor: pointer;
 }
 .navigation__menu__link:hover {
-  color: #4e4c4c;
+  color: #555;
 }
 .navigation__menu__item {
   margin: 1.5rem 1rem 1rem 1rem;
-  color: #4e4c4c;
   letter-spacing: .2rem;
 }
 
-/* screens larger than mobile phone */
 @media (orientation: landscape) {
   .navigation__menu {
     justify-content: flex-end;

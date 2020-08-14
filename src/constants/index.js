@@ -1,7 +1,9 @@
 import * as authTypes from './authTypes';
-import * as bookTypes from './bookTypes';
+import * as productTypes from './productTypes';
+import * as contactTypes from './contactTypes';
 
 export {
   authTypes,
-  bookTypes
+  productTypes,
+  contactTypes
 }

@@ -1,8 +1,10 @@
 import { combineReducers } from 'redux';
-import books from './books';
+import product from './product';
 import auth from './auth';
+import contact from './contact'
 
 export default combineReducers({
-  books,
-  auth
+  product,
+  auth,
+  contact
 });

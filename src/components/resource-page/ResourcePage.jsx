@@ -1,6 +1,6 @@
 import React from 'react';
 import NavBar from '../navigation/Navigation';
-import Books from './books/Books';
+import Products from './products/Products';
 import './ResourcePage.css';
 
 const ResourcePage = () => (
@@ -8,11 +8,10 @@ const ResourcePage = () => (
     <NavBar />
     <div className="resource-page__container">
       <div className="resource-page__main">
-        <Books />
+        <Products />
       </div>
     </div>
     <div className="resource-footer no-touch">
-      <span>Coming soon</span>
     </div>
   </div>
 );

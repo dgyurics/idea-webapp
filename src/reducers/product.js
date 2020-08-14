@@ -1,10 +1,10 @@
-import { bookTypes as types } from '../constants';
+import { productTypes as types } from '../constants';
 
 const initialState = {
   showBookModal: false,
   showAddBookModal: false,
-  showRemoveBookModal: false,
   showSuccessModal: false,
+  selectedBookIndex: -1, // a value of 0 or greater indicates a book has been selected
   error: {},
   books: []
 };
@@ -25,70 +25,67 @@ const getError = (error, msg404) => {
   };
 };
 
-const booksReducer = (state = initialState, action) => {
+const productReducer = (state = initialState, action) => {
   switch (action.type) {
     case types.TOGGLE_SUCCESS_MODAL:
       return {
         ...state,
         showAddBookModal: false,
-        showRemoveBookModal: false,
         showSuccessModal: true
       };
-    case types.GET_BOOKS_SUCCESS:
+    case types.TOGGLE_PRODUCT_SELECTION:
+      return {
+        ...state,
+        selectedBookIndex: action.payload >= 0 ? action.payload : -1
+      };
+    case types.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
         books: action.payload,
       };
-    case types.GET_BOOKS_FAIL:
-    case types.ADD_BOOK_FAIL:
+    case types.GET_PRODUCTS_FAIL:
+    case types.ADD_PRODUCT_FAIL:
       return {
         ...state,
         error: getError(action.payload)
       };
-    case types.REMOVE_BOOK_FAIL:
+    case types.REMOVE_PRODUCT_FAIL:
       return {
         ...state,
         error: getError(action.payload, 'Book not found')
       };
-    case types.ADD_BOOK_SUCCESS:
+    case types.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
         showAddBookModal: false,
         showSuccessModal: true,
         error: initialState.error
       };
-    case types.REMOVE_BOOK_SUCCESS:
+    case types.REMOVE_PRODUCT_SUCCESS:
       return {
         ...state,
-        showRemoveBookModal: false,
         showSuccessModal: true,
         error: initialState.error
       };
-    case types.TOGGLE_BOOK_MODAL:
+    case types.TOGGLE_PRODUCT_MODAL:
       return {
         ...state,
         showBookModal: !state.showBookModal,
         showAddBookModal: false,
-        showRemoveBookModal: false,
         showSuccessModal: false,
         error: initialState.error
       };
-    case types.TOGGLE_ADD_BOOK_MODAL:
+    case types.TOGGLE_ADD_PRODUCT_MODAL:
       return {
         ...state,
         showAddBookModal: !state.showAddBookModal
       };
-    case types.TOGGLE_REMOVE_BOOK_MODAL:
-      return {
-        ...state,
-        showRemoveBookModal: !state.showRemoveBookModal
-      };
-    case types.GET_BOOKS_PENDING:
-    case types.ADD_BOOK_PENDING:
-    case types.REMOVE_BOOK_PENDING:
+    case types.GET_PRODUCTS_PENDING:
+    case types.ADD_PRODUCT_PENDING:
+    case types.REMOVE_PRODUCT_PENDING:
     default:
       return state;
   }
 };
 
-export default booksReducer;
+export default productReducer;
