@@ -54,20 +54,9 @@ export const refreshJwt = () => transport({
   url: '/refresh',
 });
 
-export const getBooks = () => transport({
-  method: 'get',
-  url: '/book',
-});
-
 export const getProducts = () => transport({
   method: 'get',
   url: '/product',
-});
-
-export const addBook = data => transport({
-  method: 'put',
-  url: '/book',
-  data,
 });
 
 export const addProduct = data => transport({
@@ -80,11 +69,6 @@ export const updateProduct = (data, productId) => transport({
   method: 'put',
   url: `/product/${productId}`,
   data,
-});
-
-export const removeBook = bookId => transport({
-  method: 'delete',
-  url: `/book/${bookId}`,
 });
 
 export const removeProduct = productId => transport({

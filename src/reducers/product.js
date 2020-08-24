@@ -55,7 +55,7 @@ const productReducer = (state = initialState, action) => {
     case types.REMOVE_PRODUCT_FAIL:
       return {
         ...state,
-        error: getError(action.payload, 'Book not found')
+        error: getError(action.payload, 'Product not found')
       };
     case types.EDIT_PRODUCT_SUCCESS:
       return {

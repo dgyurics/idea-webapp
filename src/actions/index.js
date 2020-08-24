@@ -1,6 +1,6 @@
 import * as auth from './auth';
-import * as book from './product';
+import * as product from './product';
 
 export {
-  auth, book,
+  auth, product
 };
