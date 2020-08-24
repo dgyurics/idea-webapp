@@ -4,7 +4,8 @@ import {
   register as httpRegister,
   forgotPassword as httpForgotPassword,
   validateResetCode as httpValidateResetCode,
-  updatePassword as httpUpdatePassword
+  updatePassword as httpUpdatePassword,
+  refreshJwt as httpRefreshJwt
 } from '../api/auth';
 import {
   LOGIN_FAIL,
@@ -32,7 +33,7 @@ import {
   LOAD_LOCAL_JWT_SUCCESS,
   LOAD_LOCAL_JWT_FAIL,
   LOAD_LOCAL_JWT_EXPIRED,
-  LOGIN_PENDING
+  LOGIN_PENDING, REFRESH_JWT_SUCCESS, REFRESH_JWT_FAIL, REFRESH_JWT_PENDING
 } from '../constants/authTypes';
 import { decodeJwt, getJwt, isExpired, removeJwt, setJwt } from '../util/jwtUtil';
 
@@ -40,8 +41,10 @@ export const init = () => (dispatch) => {
   dispatch({ type: LOAD_LOCAL_JWT_PENDING });
   const jwtToken = getJwt();
 
-  if (!jwtToken)
-    return dispatch({ type: LOAD_LOCAL_JWT_FAIL });
+  if (!jwtToken) {
+    dispatch({ type: LOAD_LOCAL_JWT_FAIL });
+    return refreshJwt(dispatch);
+  }
 
   const decodedJwt = decodeJwt(jwtToken);
 
@@ -52,6 +55,26 @@ export const init = () => (dispatch) => {
     type: LOAD_LOCAL_JWT_SUCCESS,
     payload: decodedJwt
   });
+};
+
+export const refreshJwt = (dispatch) => {
+  dispatch({ type: REFRESH_JWT_PENDING });
+  return httpRefreshJwt(
+    (res) => {
+      setJwt(res.data);
+      dispatch({
+        type: REFRESH_JWT_SUCCESS,
+        payload: decodeJwt(res.data)
+      });
+    },
+    (error) => {
+      removeJwt();
+      dispatch({
+        type: REFRESH_JWT_FAIL,
+        payload: error
+      });
+    }
+  );
 };
 
 export const login = (credentials) => (dispatch) => {

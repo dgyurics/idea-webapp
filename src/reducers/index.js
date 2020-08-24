@@ -4,7 +4,7 @@ import auth from './auth';
 import contact from './contact'
 
 export default combineReducers({
-  product,
   auth,
-  contact
+  contact,
+  product
 });

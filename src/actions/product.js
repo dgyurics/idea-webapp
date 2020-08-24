@@ -8,13 +8,18 @@ import {
   GET_PRODUCTS_SUCCESS,
   ADD_PRODUCT_SUCCESS,
   REMOVE_PRODUCT_SUCCESS,
-  TOGGLE_PRODUCT_MODAL,
   TOGGLE_ADD_PRODUCT_MODAL,
-  TOGGLE_PRODUCT_SELECTION, EDIT_PRODUCT_PENDING, EDIT_PRODUCT_SUCCESS, EDIT_PRODUCT_FAIL
+  TOGGLE_PRODUCT_SELECTION,
+  EDIT_PRODUCT_PENDING,
+  EDIT_PRODUCT_SUCCESS,
+  EDIT_PRODUCT_FAIL,
+  TOGGLE_EDIT_PRODUCT_MODAL,
+  TOGGLE_SUCCESS_MODAL
 } from '../constants/productTypes';
 import {
   getProducts as fetchProducts,
   addProduct as postProduct,
+  updateProduct as putProduct,
   removeProduct as deleteProduct,
 } from '../api/product';
 
@@ -76,7 +81,7 @@ export const addProduct = (product) => (dispatch) => {
 
 export const editProduct = (product, productId) => (dispatch) => {
   dispatch({ type: EDIT_PRODUCT_PENDING });
-  return postProduct(
+  return putProduct(
     product,
     productId,
     () => {
@@ -99,10 +104,15 @@ export const removeProduct = (productId) => (dispatch) => {
   );
 };
 
+export const toggleEditProductModal = (idx) => ({
+  type: TOGGLE_EDIT_PRODUCT_MODAL,
+  payload: idx
+});
+
 export const toggleProductSelection = (idx) => ({
   type: TOGGLE_PRODUCT_SELECTION,
   payload: idx
 });
 
-export const toggleProductModal = () => ({ type: TOGGLE_PRODUCT_MODAL });
 export const toggleAddProductModal = () => ({ type: TOGGLE_ADD_PRODUCT_MODAL });
+export const toggleSuccessModal = () => ({ type: TOGGLE_SUCCESS_MODAL });

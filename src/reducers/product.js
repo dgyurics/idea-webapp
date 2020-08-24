@@ -1,12 +1,13 @@
 import { productTypes as types } from '../constants';
 
 const initialState = {
-  showBookModal: false,
-  showAddBookModal: false,
+  showAddProductModal: false,
+  showEditProductModal: false,
+  editProductIndex: -1,
   showSuccessModal: false,
-  selectedBookIndex: -1, // a value of 0 or greater indicates a book has been selected
+  selectedProductIndex: -1, // a value of 0 or greater indicates a product has been selected
   error: {},
-  books: []
+  products: []
 };
 
 const getError = (error, msg404) => {
@@ -30,19 +31,21 @@ const productReducer = (state = initialState, action) => {
     case types.TOGGLE_SUCCESS_MODAL:
       return {
         ...state,
-        showAddBookModal: false,
-        showSuccessModal: true
+        showAddProductModal: false,
+        showEditProductModal: false,
+        showSuccessModal: !state.showSuccessModal
       };
     case types.TOGGLE_PRODUCT_SELECTION:
       return {
         ...state,
-        selectedBookIndex: action.payload >= 0 ? action.payload : -1
+        selectedProductIndex: action.payload >= 0 ? action.payload : -1
       };
     case types.GET_PRODUCTS_SUCCESS:
       return {
         ...state,
-        books: action.payload,
+        products: action.payload,
       };
+    case types.EDIT_PRODUCT_FAIL:
     case types.GET_PRODUCTS_FAIL:
     case types.ADD_PRODUCT_FAIL:
       return {
@@ -54,31 +57,31 @@ const productReducer = (state = initialState, action) => {
         ...state,
         error: getError(action.payload, 'Book not found')
       };
+    case types.EDIT_PRODUCT_SUCCESS:
+      return {
+        ...state,
+        showEditProductModal: false,
+        showSuccessModal: true,
+        editProductIndex: -1,
+        error: initialState.error
+      };
     case types.ADD_PRODUCT_SUCCESS:
       return {
         ...state,
-        showAddBookModal: false,
+        showAddProductModal: false,
         showSuccessModal: true,
         error: initialState.error
       };
-    case types.REMOVE_PRODUCT_SUCCESS:
+    case types.TOGGLE_EDIT_PRODUCT_MODAL:
       return {
         ...state,
-        showSuccessModal: true,
-        error: initialState.error
-      };
-    case types.TOGGLE_PRODUCT_MODAL:
-      return {
-        ...state,
-        showBookModal: !state.showBookModal,
-        showAddBookModal: false,
-        showSuccessModal: false,
-        error: initialState.error
+        editProductIndex: action.payload,
+        showEditProductModal: !state.showEditProductModal
       };
     case types.TOGGLE_ADD_PRODUCT_MODAL:
       return {
         ...state,
-        showAddBookModal: !state.showAddBookModal
+        showAddProductModal: !state.showAddProductModal
       };
     case types.GET_PRODUCTS_PENDING:
     case types.ADD_PRODUCT_PENDING:

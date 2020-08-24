@@ -2,53 +2,58 @@ import React from 'react';
 import { connect } from 'react-redux';
 import PropTypes from 'prop-types';
 import AddProductForm from './add-product/AddProduct';
+import EditProductForm from './edit-product/EditProduct';
 import Modal from '../../../modal/Modal';
 import SuccessForm from '../../../modal/template/Success';
 import {
   toggleAddProductModal,
-  toggleProductModal,
+  toggleEditProductModal,
+  toggleSuccessModal,
 } from '../../../../actions/product';
 
 const Admin = ({
-  visible,
-  visibleAddBook,
+  visibleAddProduct,
+  visibleEditProduct,
   visibleSuccess,
-  toggle,
-  toggleAddBook
+  toggleAddProduct,
+  toggleEditProduct,
+  toggleSuccess
 }) => {
-  const visibleOptions = !visibleAddBook && !visibleSuccess;
-  const renderOptions = () => (
-    <div className={visibleOptions ? '' : 'hidden'}>
-      <button type="button" onClick={() => toggleAddBook()} className="modal__button modal__button--top">add product</button>
-    </div>
-  );
+
+  const onClose = () => {
+    if(visibleAddProduct) toggleAddProduct();
+    else if(visibleEditProduct) toggleEditProduct();
+    else toggleSuccess();
+  };
 
   return (
-    <Modal visible={visible} onClose={() => toggle()}>
-      { renderOptions() }
+    <Modal visible={visibleAddProduct || visibleEditProduct || visibleSuccess} onClose={onClose}>
       { visibleSuccess ? <SuccessForm message="success" /> : null }
-      { visibleAddBook ? <AddProductForm /> : null }
+      { visibleAddProduct ? <AddProductForm /> : null }
+      { visibleEditProduct ? <EditProductForm /> : null }
     </Modal>
   );
 };
 
 const mapDispatchToProps = dispatch => ({
-  toggle: () => dispatch(toggleProductModal()),
-  toggleAddBook: () => dispatch(toggleAddProductModal())
+  toggleAddProduct: () => dispatch(toggleAddProductModal()),
+  toggleEditProduct: () => dispatch(toggleEditProductModal()),
+  toggleSuccess: () => dispatch(toggleSuccessModal())
 });
 
 const mapStateToProps = state => ({
-  visible: state.product.showBookModal,
-  visibleAddBook: state.product.showAddBookModal,
+  visibleAddProduct: state.product.showAddProductModal,
+  visibleEditProduct: state.product.showEditProductModal,
   visibleSuccess: state.product.showSuccessModal
 });
 
 Admin.propTypes = {
-  visible: PropTypes.bool.isRequired,
-  visibleAddBook: PropTypes.bool.isRequired,
+  visibleAddProduct: PropTypes.bool.isRequired,
+  visibleEditProduct: PropTypes.bool.isRequired,
   visibleSuccess: PropTypes.bool.isRequired,
-  toggle: PropTypes.func.isRequired,
-  toggleAddBook: PropTypes.func.isRequired
+  toggleAddProduct: PropTypes.func.isRequired,
+  toggleEditProduct: PropTypes.func.isRequired,
+  toggleSuccess: PropTypes.func.isRequired
 };
 
 export default connect(

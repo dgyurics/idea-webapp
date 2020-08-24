@@ -168,7 +168,6 @@ const authReducer = (state = initState, action) => {
         showSuccessModal: !state.showSuccessModal
       };
     default:
-      console.warn(`Unhandled action type ${action.type}`);
       return state;
   }
 };

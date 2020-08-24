@@ -4,11 +4,18 @@ import {
   register as httpRegister,
   forgotPassword as httpForgotPassword,
   validateResetCode as httpValidateResetCode,
-  updatePassword as httpUpdatePassword
+  updatePassword as httpUpdatePassword,
+  refreshJwt as httpRefreshJwt
 } from '../util/httpClient';
 
 export const login = (credentials, cbSuccess, cbFail) => {
   httpLogin(credentials)
+    .then((res) => cbSuccess(res))
+    .catch(error => cbFail(error));
+};
+
+export const refreshJwt = (cbSuccess, cbFail) => {
+  httpRefreshJwt()
     .then((res) => cbSuccess(res))
     .catch(error => cbFail(error));
 };
