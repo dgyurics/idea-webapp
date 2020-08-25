@@ -36,6 +36,7 @@ const CreateProduct = ({ addProduct, error }) => {
       <span className="modal__error">{state.errorMsg}</span>
       <form onSubmit={handleSubmit} className="modal__form">
         <input type="text" name="name" placeholder="name" value={state.name} onChange={handleChange} className="modal__input" />
+        <input type="text" name="priority" placeholder="priority" value={state.priority} onChange={handleChange} className="modal__input" />
         <input type="text" name="description" placeholder="description" value={state.description} onChange={handleChange} className="modal__input" />
         <input type="text" name="imageUri" placeholder="image uri" value={state.imageUri} onChange={handleChange} className="modal__input" />
         <input type="text" name="imageAlt" placeholder="image alt" value={state.imageAlt} onChange={handleChange} className="modal__input" />

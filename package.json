@@ -1,6 +1,6 @@
 {
   "name": "lagom",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "nothing to see here",
   "main": "src/index.jsx",
   "scripts": {

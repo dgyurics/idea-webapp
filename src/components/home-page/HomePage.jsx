@@ -1,5 +1,6 @@
 import React from 'react';
 import NavBar from '../navigation/Navigation';
+import { version } from '../../../package.json';
 import './HomePage.css';
 
 if (!PRODUCTION) {
@@ -11,6 +12,7 @@ const HomePage = () => (
   <div className="home-page">
     <NavBar whiteBackground={false} />
     <div className="home-container">
+      <span className="hidden">{version}</span>
       <div className="home-container__logo">
         <h1 className="home-logo no-touch">
           <span>A </span>
