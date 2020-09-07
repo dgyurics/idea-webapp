@@ -11,7 +11,7 @@
     min-width: 10rem;
     width: 100%;
     border: 1px #e6e6e69c solid;
-    box-shadow: 0px 4px 12px 0px rgba(0,0,0,0.2);
+    box-shadow: 0px 2px 4px 0px rgba(0,0,0,0.2);
     z-index: 1;
 }
 .drop-down__items {
@@ -20,6 +20,7 @@
     list-style: none;
 }
 .drop-down__item {
+    letter-spacing: 1px;
     text-align: center;
     padding: 5px 0 5px 0;
     font-size: 1.2rem;
