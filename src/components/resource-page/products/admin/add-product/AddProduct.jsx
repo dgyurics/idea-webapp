@@ -6,6 +6,7 @@ import { addProduct } from '../../../../../actions/product';
 const CreateProduct = ({ addProduct, error }) => {
   const initState = {
     name: '',
+    priority: 9,
     description: '',
     imageUri: '',
     imageAlt: '',
