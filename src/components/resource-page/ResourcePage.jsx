@@ -11,8 +11,6 @@ const ResourcePage = () => (
         <Products />
       </div>
     </div>
-    <div className="resource-footer no-touch">
-    </div>
   </div>
 );
 

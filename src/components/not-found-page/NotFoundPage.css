@@ -4,17 +4,19 @@
 }
 .not-found-container {
   overflow: hidden;
-  height: calc(100% - 4rem); /* leave room at bottom for footer */
+  height: 100%;
+  width: 100%;
 }
 .not-found-code {
   font-size: 5vh;
   display: block;
 }
-.not-found-text {
-  font-size: 17vh;
+.not-found-container__logo {
   font-family: 'Poiret One', cursive;
+  height: calc(100% - 4rem);
 }
-.not-found-text--center {
+.not-found-logo {
+  font-size: 17vh;
   position: relative;
   top: 50%;
   left: 60%;

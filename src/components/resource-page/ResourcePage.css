@@ -12,10 +12,3 @@
   height: 100%;
   width: 100%;
 }
-.resource-footer {
-  background-color: black;
-  position: absolute;
-  bottom: 0;
-  height: 3rem;
-  width: 100%;
-}
