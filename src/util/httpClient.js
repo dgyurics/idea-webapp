@@ -90,7 +90,8 @@ transport.interceptors.request.use((config) => {
 
 transport.interceptors.response.use(response => response, (error) => {
   const path = error?.response?.config ? new URL(error.response.config.url).pathname : null;
-  if (error?.response?.status === 401 && path !== '/refresh') {
+  const responseStatus = error?.response?.status;
+  if ((responseStatus === 401 || responseStatus === 403) && path !== '/refresh') {
     // try to get new jwt token (refresh token stored as http only cookie)
     // if success, re-attempt the initial http request
     // if fail, redirect user to login page
